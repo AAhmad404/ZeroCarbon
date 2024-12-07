@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/palette_turquoise"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:fillViewport="true">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fitsSystemWindows="true"
+    android:background="@color/palette_turquoise"
+    tools:context=".MarketTrends">
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="30dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="25dp"
+            >
+
+            <TextView
+                android:id="@+id/description_title"
+                android:layout_width="340dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:text="Top 2024 Eco-Friendly Products"
+                android:textColor="@color/palette_stormy_gray"
+                android:textSize="23sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+
+
+
+
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="60dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="25dp"
+            app:cardBackgroundColor="#d1fffc"
+            >
+
+            <TextView
+                android:id="@+id/description_appliance"
+                android:layout_width="340dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:text="Energy-Efficient Appliances"
+
+                android:textColor="@color/palette_turquoise"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_height="240dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="15dp"
+            app:cardCornerRadius="20dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="25dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/appliance"
+                    android:layout_width="120dp"
+                    android:layout_height="180dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/appliance">
+
+                </com.google.android.material.imageview.ShapeableImageView>
+
+                <TextView
+                    android:id="@+id/hyperlink1"
+                    android:layout_width="185dp"
+                    android:layout_height="210dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toEndOf="@+id/appliance"
+                    android:text="@string/hlink1"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="50dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="25dp"
+            app:cardBackgroundColor="#d1fffc"
+            >
+
+            <TextView
+                android:id="@+id/description_fashion"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:text="Sustainable Fashion Brands"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_height="240dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="15dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="25dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgfashion"
+                    android:layout_width="120dp"
+                    android:layout_height="210dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginBottom="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/fashion">
+
+                </com.google.android.material.imageview.ShapeableImageView>
+
+                <TextView
+                    android:id="@+id/hyperlink2"
+                    android:layout_width="220dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_toEndOf="@+id/imgfashion"
+                    android:text="@string/hlink2"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

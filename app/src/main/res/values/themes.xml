@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Planetze" parent="Theme.Material3.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- res/values/themes.xml (Light Theme) -->
+
+        <!-- Main colours -->
+        <item name="colorPrimary">@color/palette_turquoise</item>
+        <item name="colorSecondary">@color/palette_light_blue</item>
+        <item name="colorOnBackground">@color/palette_light_gray</item>
+        <item name="colorSurface">@color/palette_black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/palette_turquoise</item>
+        <item name="colorOnPrimaryContainer">@color/white</item>
+        <item name="colorSecondaryContainer">@color/palette_turquoise_tint_200</item>
+    </style>
+
+    <style name="Theme.Planetze" parent="Base.Theme.Planetze" />
+
+    <style name="roundImageViewRounded">
+
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+
+
+    </style>
+</resources>

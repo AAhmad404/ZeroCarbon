@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/EcoTrackerFragment"
+        android:title="@string/ecotracker"
+        android:icon="@drawable/eco_tracker_nav_ic"
+        />
+    <item
+        android:id="@+id/EcoGaugeFragment"
+        android:title="@string/ecogauge"
+        android:icon="@drawable/eco_gauge_nav_ic"
+    />
+    <item
+        android:id="@+id/EcoBalanceFragment"
+        android:title="@string/ecobalance"
+        android:icon="@drawable/eco_balance_nav_ic"
+    />
+    <item
+        android:id="@+id/EcoHubEntryFragment"
+        android:title="@string/ecohub"
+        android:icon="@drawable/eco_hub_nav_ic"
+    />
+</menu>

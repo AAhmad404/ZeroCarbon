@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/palette_turquoise"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:fillViewport="true"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".EcoHub_Entry">
+
+
+            <RelativeLayout
+                android:layout_width="360dp"
+                android:layout_height="270dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bordler"
+                android:layout_marginStart="25dp">
+
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:layout_width="330dp"
+                    android:layout_height="230dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    app:autoPlay="false"
+                    app:videoId="j-WUCdL-EiA"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="360dp"
+                android:layout_height="270dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bordler"
+                android:layout_marginStart="25dp">
+
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:layout_width="330dp"
+                    android:layout_height="230dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    app:autoPlay="false"
+                    app:videoId="OY5eba3jxmg"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="360dp"
+                android:layout_height="270dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bordler"
+                android:layout_marginStart="25dp">
+
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:layout_width="330dp"
+                    android:layout_height="230dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    app:autoPlay="false"
+                    app:videoId="z4vA7UVv2oA"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="360dp"
+                android:layout_height="270dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bordler"
+                android:layout_marginStart="25dp">
+
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:layout_width="330dp"
+                    android:layout_height="230dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    app:autoPlay="false"
+                    app:videoId="K5IGqQmc-90"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="360dp"
+                android:layout_height="270dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bordler"
+                android:layout_marginStart="25dp">
+
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:layout_width="330dp"
+                    android:layout_height="230dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    app:autoPlay="false"
+                    app:videoId="rOZaxdPYP7U"
+                    />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

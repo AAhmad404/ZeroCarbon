@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "894805608376",
+    "firebase_url": "https://planetze-c3c95-default-rtdb.firebaseio.com",
+    "project_id": "planetze-c3c95",
+    "storage_bucket": "planetze-c3c95.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:894805608376:android:d5c8410c961fc40fb3314d",
+        "android_client_info": {
+          "package_name": "com.example.planetze"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "894805608376-3rkh2siehknrmpvct19dps7q04jqanfr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANgFqMNqT9TcBwMMjLdnD8ONpBR4LafSY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "894805608376-3rkh2siehknrmpvct19dps7q04jqanfr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

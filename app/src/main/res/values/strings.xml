@@ -1,0 +1,180 @@
+<resources>
+    <string name="app_name">Planetze</string>
+
+    <!-- Sign-in and sign-up pages -->
+    <string name="welcome">Welcome!</string>
+    <string name="welcome_back">Welcome Back!</string>
+
+    <string name="full_name">Full Name</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="forgot_password"><u>Forgot password?</u></string>
+
+    <string name="or">or</string>
+
+    <string name="register_your_account">Register your account</string>
+    <string name="login_to_your_account">Login to your account</string>
+
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="do_not_have_an_account">Don\'t have an account?"</string>
+
+    <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="sign_up_with_google">Sign up with Google</string>
+
+    <string name="sign_in"><u>Sign in</u></string>
+    <string name="sign_up"><u>Sign up</u></string>
+    <string name="login_label">Login</string>
+
+    <string name="signupSuccess">Signup Successful!</string>
+    <string name="Welcome">\nwelcome to planetze, insert name</string>
+    <string name="checkEmail"> \nPlease check your email to verify your account.</string>
+    <string name="tapResend">Didn\'t receive an email? Tap the button below to resend the verification email.\n</string>
+    <string name="resend">Resend confirmation email</string>
+    <string name="goLogin">Go to login page</string>
+
+    <!-- Survey -->
+    <string name="get_started_survey_prompt">Let\'s get started!</string>
+    <string name="we_ll_begin_with_a_survey">We\'ll begin with a survey.</string>
+
+    <!-- Forgot password page -->
+    <string name="confirm_password">Confirm Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="enter_your_email">Enter your Email</string>
+    <string name="close">Close</string>
+
+    <!-- Strings used for home -->
+    <string name="eco_gauge">Eco Gauge</string>
+    <string name="eco_balance">Eco Balance</string>
+    <string name="eco_hub">Eco Hub</string>
+    <string name="eco_tracker">Eco Tracker</string>
+
+    <string name="ecogauge">EcoGauge</string>
+    <string name="ecotracker">EcoTracker</string>
+    <string name="ecobalance">EcoBalance</string>
+    <string name="ecohub">EcoHub</string>
+
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="intro">You Carbon Emission is:</string>
+    <string name="idk">.?.</string>
+    <string name="title">Eco Balance</string>
+    <string name="para1">Regardless of your carbon emission, we can all contribute to helping reduce carbon emission.
+    We understand it is at times difficult to neutralize emission, and at times we cannot control it. We have provided offset emission projects, which can help offset you carbon emission, through purchasing carbon credits.
+    </string>
+
+    <!-- EcoGauge strings -->
+    <string name="_11_nov">11 Nov</string>
+    <string name="transportation">Transportation</string>
+    <string name="please_select_an_answer">Please select an answer</string>
+    <string name="asterisk">*</string>
+    <string name="emission_breakdown_by_category">Emission breakdown by category.</string>
+    <string name="compare_with">Compare with:</string>
+
+    <!-- Time period for the segmented button in the EcoGauge fragment-->
+    <string name="_1d">1D</string>
+    <string name="_1m">1M</string>
+    <string name="_1y">1Y</string>
+    <string name="all">ALL</string>
+    <string name="_1w">1W</string>
+    <string name="n_a">N/A</string>
+
+    <string name="delete_item">Delete Item</string>
+    <string name="add_item">Add Item</string>
+    <string name="back">Back</string>
+
+    <string name="hlink1">
+        <a href="https://natural-resources.canada.ca/energy-efficiency/products/appliances-for-residential-use/clothes-dryers/13696"> - Clothes Dryer\n</a>
+        <a href="https://natural-resources.canada.ca/energy-efficiency/products/appliances-for-residential-use/freezers/13995">- Freezer\n</a>
+        <a href="https://natural-resources.canada.ca/energy-efficiency/products/cooling-and-ventilating-equipment-for-residential-use/central-air-conditioners/16183">- Air Condition\n</a>
+        <a href="https://natural-resources.canada.ca/energy-efficiency/products/appliances-for-residential-use/air-purifiers/14001">- Air purifiers\n</a>
+        <a href="https://natural-resources.canada.ca/energy-efficiency/products/appliances-for-residential-use/dishwashers/13991">- Dishwasher\n</a>
+        <a href="https://natural-resources.canada.ca/energy-efficiency/products/appliances-for-residential-use/refrigerators/13999">- Refrigerators\n</a>
+        <a href="https://natural-resources.canada.ca/energy-efficiency/energy-star-canada/energy-star-products/list-energy-star-certified-products/residential-electric-cooking-products/26135">- Electrical Cooking\n</a>
+    </string>
+
+    <string name="hlink2">
+        <a href="https://natural-resources.canada.ca/energy-efficiency/products/appliances-for-residential-use/clothes-dryers/13696"> - Eileen Fisher\n</a>
+        <a href="https://www.patagonia.com/shop/womens?irclickid=Uj%3AScNWaUxyKTfzR62zwD29ZUkCVybWNrXSGQw0&amp;sharedid=&amp;irpid=274622&amp;iradid=1948563&amp;utm_source=The%20Good%20Trade%E2%80%8A&amp;utm_medium=affiliate&amp;utm_content=%22Content%22&amp;irgwc=1">- Patagonia\n</a>
+        <a href="https://www.tentree.ca/">- tentree\n</a>
+        <a href="https://www.taylorstitch.com/?clickid=Uj%3AScNWaUxyKTfzR62zwD29ZUkCVyYSxrXSGQw0&amp;irgwc=1&amp;utm_medium=affiliate&amp;utm_source=ir&amp;iradid=451752&amp;iradname=Online%20Tracking%20Link&amp;prodsku=&amp;mpname=The%20Good%20Trade%E2%80%8A&amp;mpid=274622&amp;utm_campaign=The%20Good%20Trade%E2%80%8A">- Taylor Stitch\n</a>
+        <a href="https://wearpact.com/men/apparel?utm_source=147620&amp;utm_medium=affiliate&amp;utm_campaign=MAID1144&amp;utm_content=147620&amp;pjclkid=4930688027&amp;clickId=4930688027">- Pact\n</a>
+        <a href="https://www.buckmason.com/?sscid=b1k8_1au2n9&amp;g=men">- Buck Mason\n</a>
+        <a href="https://www.on.com/en-us/shop/womens/shoes?clickref=1011lzYwVdBJ&amp;utm_source=Partnerize&amp;utm_medium=affiliate&amp;utm_campaign=thegoodtrade&amp;utm_content=AMR-CA">- On\n</a>
+    </string>
+
+    <!-- Survey -->
+    <string name="back_btn">Back</string>
+    <string name="issue_prompt_star">*</string>
+    <string name="issue_prompt_add_activity">Please select an answer</string>
+    <string name="negligible_good_job">negligible - Good Job!</string>
+    <string name="begin_survey">Begin Survey</string>
+    <string name="my_annual_carbon_footprint">My Annual Carbon Footprint</string>
+    <string name="breakdown_by_category_tons">Breakdown by Category (tons):</string>
+    <string name="consumption">Consumption</string>
+    <string name="_0">0</string>
+    <string name="national_average">National Average</string>
+    <string name="comparison_to_country">Comparison to country</string>
+    <string name="_502_0">502.0</string>
+    <string name="food">Food</string>
+    <string name="comparison_to_global_target">Comparison to global target</string>
+    <string name="you">You</string>
+    <string name="emitted_co2_year_tons">Emitted CO2/year (tons)</string>
+    <string name="housing">Housing</string>
+    <string name="comparing_with">Comparing with:</string>
+    <string name="comparison_by_country">Comparison by Country</string>
+    <string name="total">Total:</string>
+    <string name="retake">Retake</string>
+    <string name="statistics">Statistics:</string>
+    <string name="home">Home</string>
+
+    <!-- Settings page -->
+    <string name="settings">Settings</string>
+    <string name="this_will_increase_eco_gauge_loading_times">
+         This will increase Eco Gauge loading times
+    </string>
+    <string name="change">Change</string>
+    <string name="stay_logged_in">Stay logged in</string>
+    <string name="hide_trend_line_points">Hide trend line points</string>
+    <string name="hide_chart_grid_lines">Hide chart grid line</string>
+    <string name="interpolate_data">Interpolate data</string>
+    <string name="log_out">Log out</string>
+    <string name="delete_account">Delete Account</string>
+
+    <string name="lk1"> <a href="https://treecanada.ca/donate"> Learn more  </a></string>
+    <string name="lk2"> <a href="https://treecanada.ca/donate-ngp-individual/"> Learn more  </a></string>
+    <string name="lk3"> <a href="https://donate.givepower.org/donate-now"> Learn more  </a></string>
+    <string name="lk4"> <a href="https://www.torontoenvironment.org/donate"> Learn more  </a></string>
+    <string name="lk5"> <a href="https://trees.org/"> Learn more  </a></string>
+    <string name="lk6"> <a href="https://act.earthjustice.org/a/givetoday?ms=web_menu_header"> Learn more  </a></string>
+
+    <!-- Habits page -->
+    <string name="save_btn">Save</string>
+    <string name="action_btn_default">Adopt</string>
+    <string name="all_habits_btn">All Habits</string>
+    <string name="apply_filter_btn">Apply Filter</string>
+    <string name="filter_prompt">Filter by:</string>
+    <string name="issue_prompt_add_habit">Please select a habit first</string>
+    <string name="recommendation">Adopt a habit from \'all habits\' to start</string>
+    <string name="recommended_btn">Recommended</string>
+    <string name="no_recommendations">No habits to recommend, keep up the good work!</string>
+    <string name="recommendation_description">Recommendations are from category of highest emissions for past 30 days</string>
+    <string name="your_habits_btn">Your Habits</string>
+
+    <!-- Activities page -->
+    <string name="activities_btn">Activities</string>
+    <string name="see_survey_results_btn">See Survey Results</string>
+    <string name="todays_total">Today\'s Total:</string>
+    <string name="add_btn">Add</string>
+    <string name="daily_total_default_emissions">0.0 kg of CO2 Emitted</string>
+    <string name="view_calendar">View Calendar</string>
+    <string name="delete_btn">Delete</string>
+    <string name="edit_btn">Edit</string>
+    <string name="no_activities_today_yet">No activities today yet</string>
+    <string name="issue_prompt_eco_tracker">Please select an activity to edit/delete</string>
+    <string name="current_year">2024</string>
+    <string name="habits_btn">Habits</string>
+</resources>

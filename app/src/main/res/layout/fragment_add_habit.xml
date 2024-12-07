@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddHabit"
+    android:fillViewport="true">
+
+    <!-- Constraint layout as main parent -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <!-- Habits list display -->
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="281dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="20dp"
+            android:queryHint="Search for a habit..."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/white"/>
+
+        <ListView
+            android:nestedScrollingEnabled="true"
+            android:id="@+id/listView"
+            android:layout_width="347dp"
+            android:layout_height="232dp"
+            android:layout_marginTop="4dp"
+            android:listSelector="@drawable/list_item_selector"
+            app:layout_constraintEnd_toEndOf="@+id/searchView"
+            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintStart_toStartOf="@+id/searchView"
+            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+        <!-- buttons -->
+
+        <Button
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="128dp"
+            android:text="@string/back_btn"
+            app:layout_constraintEnd_toStartOf="@+id/applyFilterBtn"
+            app:layout_constraintTop_toBottomOf="@+id/impactSpinner" />
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="@+id/listView"
+            app:layout_constraintStart_toStartOf="@+id/listView"
+            app:layout_constraintTop_toBottomOf="@+id/listView"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <Button
+                android:id="@+id/allHabitsBtn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all_habits_btn"
+                android:textColor="@color/palette_light_gray"
+                app:backgroundTint="@color/custom_button_group_background"
+                app:rippleColor="@color/palette_turquoise_tint_200"
+                app:strokeColor="@color/palette_turquoise"/>
+
+            <Button
+                android:id="@+id/yourHabitsBtn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/your_habits_btn"
+                android:textColor="@color/palette_light_gray"
+                app:backgroundTint="@color/custom_button_group_background"
+                app:rippleColor="@color/palette_turquoise_tint_200"
+                app:strokeColor="@color/palette_turquoise"/>
+
+            <Button
+                android:id="@+id/recommendedBtn"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recommended_btn"
+                android:textColor="@color/palette_light_gray"
+                app:backgroundTint="@color/custom_button_group_background"
+                app:rippleColor="@color/palette_turquoise_tint_200"
+                app:strokeColor="@color/palette_turquoise"/>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+        <!-- Filter section -->
+        <Button
+            android:id="@+id/actionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:text="@string/action_btn_default"
+            app:layout_constraintEnd_toEndOf="@+id/toggleButton"
+            app:layout_constraintStart_toStartOf="@+id/listView"
+            app:layout_constraintTop_toTopOf="@+id/toggleButton" />
+
+        <Spinner
+            android:id="@+id/categorySpinner"
+            android:layout_width="219dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/listView"
+            app:layout_constraintTop_toBottomOf="@+id/actionBtn" />
+
+        <TextView
+            android:id="@+id/filterPrompt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="136dp"
+            android:text="@string/filter_prompt"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="@+id/listView"
+            app:layout_constraintTop_toBottomOf="@+id/listView" />
+
+        <Spinner
+            android:id="@+id/impactSpinner"
+            android:layout_width="219dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/categorySpinner"
+            app:layout_constraintTop_toBottomOf="@+id/categorySpinner" />
+
+        <Button
+            android:id="@+id/applyFilterBtn"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/apply_filter_btn"
+            app:layout_constraintEnd_toEndOf="@+id/impactSpinner"
+            app:layout_constraintTop_toBottomOf="@+id/impactSpinner" />
+
+
+        <!-- Miscellaneous -->
+
+        <TextView
+            android:id="@+id/recommendation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recommendation"
+            android:textStyle="bold|italic"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/listView"
+            app:layout_constraintEnd_toEndOf="@+id/listView"
+            app:layout_constraintStart_toStartOf="@+id/listView"
+            app:layout_constraintTop_toTopOf="@+id/listView" />
+
+        <TextView
+            android:id="@+id/recommendedDescription"
+            android:layout_width="333dp"
+            android:layout_height="39dp"
+            android:layout_marginBottom="6dp"
+            android:text="@string/recommendation_description"
+            android:textAlignment="center"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toBottomOf="@+id/listView"
+            app:layout_constraintEnd_toEndOf="@+id/listView"
+            app:layout_constraintStart_toStartOf="@+id/listView"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/noRecs"
+            android:layout_width="258dp"
+            android:layout_height="60dp"
+            android:text="@string/no_recommendations"
+            android:textAlignment="center"
+            android:textColor="@color/palette_turquoise"
+            android:textSize="20sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintBottom_toTopOf="@+id/recommendedDescription"
+            app:layout_constraintEnd_toEndOf="@+id/listView"
+            app:layout_constraintStart_toStartOf="@+id/listView"
+            app:layout_constraintTop_toBottomOf="@+id/searchView"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/issuePrompt1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/issue_prompt_add_habit"
+            android:textColor="@color/palette_black"
+            android:textStyle="italic|bold"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/applyFilterBtn"
+            app:layout_constraintHorizontal_bias="0.547"
+            app:layout_constraintStart_toStartOf="@+id/backBtn"
+            app:layout_constraintTop_toBottomOf="@+id/backBtn"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/issuePrompt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/issue_prompt_star"
+            android:textStyle="bold|italic"
+            android:textColor="@color/red"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@+id/issuePrompt1"
+            app:layout_constraintTop_toTopOf="@+id/issuePrompt1"
+            android:visibility="invisible"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

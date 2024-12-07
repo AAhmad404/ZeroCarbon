@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default colours -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="dark_gray">#5A5A5A</color>
+    <color name="red">#DE3163</color>
+
+    <!-- Default Light Mode Background -->
+    <color name="default_background_white">#FAFAFA</color>
+
+    <!-- Palette colours -->
+    <color name="palette_light_gray">#d8dbe2</color>
+    <color name="palette_light_blue">#a9bcd0</color>
+    <color name="palette_turquoise">#009999</color>
+    <color name="palette_stormy_gray">#373f51</color>
+    <color name="palette_black">#1b1b1e</color>
+
+    <!-- palette_turquoise tints -->
+    <color name="palette_turquoise_tint_100">#10A3A3</color>
+    <color name="palette_turquoise_tint_200">#23ADAD</color>
+    <color name="palette_turquoise_tint_300">#37B8B8</color>
+    <color name="palette_turquoise_tint_400">#4EC2C2</color>
+    <color name="palette_turquoise_tint_500">#66CCCC</color>
+    <color name="palette_turquoise_tint_600">#81D6D6</color>
+    <color name="palette_turquoise_tint_700">#9DE0E0</color>
+    <color name="palette_turquoise_tint_800">#BCEBEB</color>
+    <color name="palette_turquoise_tint_900">#DCF5F5</color>
+    <!-- palette_turquoise shades -->
+    <color name="palette_turquoise_shade_100">#008A8A</color>
+    <color name="palette_turquoise_shade_200">#007A7A</color>
+    <color name="palette_turquoise_shade_300">#006B6b</color>
+    <color name="palette_turquoise_shade_400">#005C5C</color>
+    <color name="palette_turquoise_shade_500">#004D4D</color>
+    <color name="palette_turquoise_shade_600">#003D4D</color>
+    <color name="palette_turquoise_shade_700">#002E2E</color>
+    <color name="palette_turquoise_shade_800">#001F1F</color>
+    <color name="palette_turquoise_shade_900">#000F0F</color>
+</resources>

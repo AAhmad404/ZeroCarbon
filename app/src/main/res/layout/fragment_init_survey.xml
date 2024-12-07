@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/palette_turquoise"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <!-- Question box -->
+
+    <!-- Category of question -->
+    <TextView
+        android:id="@+id/category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:gravity="center_vertical"
+        android:text="@string/transportation"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="italic|bold"
+        android:shadowColor="#80000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="invisible"/>
+
+    <!-- Multiple Choice Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/white"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:layout_constraintBottom_toTopOf="@id/nextBtn"
+        app:layout_constraintTop_toBottomOf="@+id/category">
+
+        <!-- LinearLayout to hold all content inside the ScrollView -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/question"
+                android:layout_width="341dp"
+                android:layout_height="55dp"
+                android:gravity="center_vertical"
+                android:text=""
+                android:textColor="@color/palette_black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="225dp">
+            <RadioGroup
+                android:paddingBottom="20dp"
+                android:id="@+id/options"
+                android:layout_width="342dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/question">
+            </RadioGroup>
+            </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/pleaseAnswer2"
+                android:layout_width="17dp"
+                android:layout_height="12dp"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp"
+                android:text="@string/asterisk"
+                android:textColor="@android:color/holo_red_light"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.04"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/options" />
+
+            <TextView
+                android:id="@+id/pleaseAnswer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginTop="8dp"
+                android:text="@string/please_select_an_answer"
+                android:textColor="@color/palette_black"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/please_answer2"
+                app:layout_constraintTop_toBottomOf="@+id/options" />
+        </LinearLayout>
+
+            <TextView
+                android:id="@+id/getStartedPrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/get_started_survey_prompt"
+                android:textColor="@color/palette_black"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_weight="1">
+            </View>
+
+            <TextView
+                android:id="@+id/beginWithSurveyText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/we_ll_begin_with_a_survey"
+                android:textColor="@color/palette_light_gray"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/beginSurveyBtn"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/begin_survey"
+                android:layout_gravity="center"/>
+
+            <!-- "Please select an answer" prompt for when user tries to proceed without answering-->
+            <!-- also part of the "select an answer" prompt-->
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Next Button -->
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/palette_turquoise"
+        android:textSize="16sp"
+        android:text="@string/next"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="invisible"/>
+
+    <!-- Back Button -->
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/palette_turquoise"
+        android:textSize="16sp"
+        android:text="@string/back"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

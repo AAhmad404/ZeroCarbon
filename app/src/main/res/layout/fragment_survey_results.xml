@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/palette_turquoise"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_horizontal"
+            android:text="@string/my_annual_carbon_footprint"
+            android:textColor="@color/white"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- Second graph -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/trend_graph_card"
+            android:layout_width="361dp"
+            android:layout_height="188dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/white"
+            android:clickable="true"
+            android:contentDescription="@string/emission_breakdown_by_category"
+            android:elevation="8dp"
+            android:focusable="true"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/total_bar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/graph1_constraint"
+                android:layout_width="358dp"
+                android:layout_height="186dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/trend_graph_card"
+                app:layout_constraintEnd_toEndOf="@+id/trend_graph_card"
+                app:layout_constraintHorizontal_bias="0.49"
+                app:layout_constraintStart_toStartOf="@+id/trend_graph_card"
+                app:layout_constraintTop_toTopOf="@+id/trend_graph_card">
+
+                <!-- labels -->
+                <TextView
+                    android:id="@+id/transport_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/transportation"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/food_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/food"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/transport_label" />
+
+                <TextView
+                    android:id="@+id/housing_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/housing"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/food_label" />
+
+                <TextView
+                    android:id="@+id/cons_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+
+                    android:gravity="center_vertical"
+                    android:text="@string/consumption"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/housing_label" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="90dp" />
+
+                <!-- Bars -->
+                <TextView
+                    android:id="@+id/food"
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="104dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/palette_turquoise"
+                    android:gravity="center"
+                    android:text="@string/_0"
+                    android:textColor="@color/palette_light_gray"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/transport" />
+
+                <TextView
+                    android:id="@+id/housing"
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="104dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/palette_turquoise"
+                    android:gravity="center"
+                    android:text="@string/_0"
+                    android:textColor="@color/palette_light_gray"
+                    android:textSize="11sp"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/food" />
+
+                <TextView
+                    android:id="@+id/transport"
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="104dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/palette_turquoise"
+                    android:gravity="center"
+                    android:text="@string/_0"
+                    android:textColor="@color/palette_light_gray"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/consumption"
+                    android:layout_width="10dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="104dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/palette_turquoise"
+                    android:gravity="center"
+                    android:text="@string/_0"
+                    android:textColor="@color/palette_light_gray"
+                    android:textSize="11sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/housing" />
+
+                <!-- encouragement text ("low carbon emissions - good job!")-->
+
+                <TextView
+                    android:id="@+id/t_negligible"
+                    android:layout_width="96dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/negligible_good_job"
+                    android:textSize="10sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/transport"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/f_negligible"
+                    android:layout_width="96dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/negligible_good_job"
+                    android:textSize="10sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/food"
+                    app:layout_constraintTop_toBottomOf="@+id/t_negligible" />
+
+                <TextView
+                    android:id="@+id/h_negligible"
+                    android:layout_width="96dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/negligible_good_job"
+                    android:textSize="10sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/housing"
+                    app:layout_constraintTop_toBottomOf="@+id/f_negligible" />
+
+                <TextView
+                    android:id="@+id/c_negligible"
+                    android:layout_width="96dp"
+                    android:layout_height="20dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/negligible_good_job"
+                    android:textSize="10sp"
+                    android:visibility="invisible"
+                    app:layout_constraintStart_toEndOf="@+id/consumption"
+                    app:layout_constraintTop_toBottomOf="@+id/h_negligible" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/bycategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/breakdown_by_category_tons"
+            android:textColor="@color/white"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/trend_graph_card"
+            app:layout_constraintStart_toStartOf="@+id/trend_graph_card" />
+
+        <TextView
+            android:id="@+id/select_country"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/comparing_with"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/trend1graph_card"
+            app:layout_constraintStart_toStartOf="@+id/trend1graph_card" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="227dp"
+            android:layout_height="22dp"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/trend1graph_card"
+            app:layout_constraintEnd_toEndOf="@+id/trend1graph_card" />
+
+        <TextView
+            android:id="@+id/title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/comparison_by_country"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/spinner"
+            app:layout_constraintEnd_toEndOf="@+id/trend1graph_card"
+            app:layout_constraintStart_toStartOf="@+id/trend1graph_card" />
+
+        <TextView
+            android:id="@+id/total_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/trend1graph_card"
+            android:layout_width="357dp"
+            android:layout_height="173dp"
+            android:layout_marginTop="85dp"
+            android:background="@color/white"
+            android:clickable="true"
+            android:contentDescription="@string/emission_breakdown_by_category"
+            android:elevation="8dp"
+            android:focusable="true"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trend_graph_card">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/graph2constraint"
+                android:layout_width="354dp"
+                android:layout_height="172dp"
+
+                tools:layout_editor_absoluteY="101dp">
+
+                <TextView
+                    android:id="@+id/user_bar"
+                    android:layout_width="26dp"
+                    android:layout_height="65dp"
+                    android:layout_marginStart="92dp"
+                    android:background="@color/palette_turquoise"
+                    android:text=""
+
+                    app:layout_constraintBottom_toTopOf="@+id/line"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/you"
+                    android:layout_width="26dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="92dp"
+                    android:text="@string/you"
+                    android:textColor="@color/palette_turquoise"
+                    app:layout_constraintBottom_toTopOf="@+id/user_bar"
+
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/country_bar"
+                    android:layout_width="26dp"
+                    android:layout_height="82dp"
+                    android:layout_marginEnd="92dp"
+                    android:background="@color/palette_turquoise"
+                    android:text=""
+
+                    app:layout_constraintBottom_toTopOf="@+id/line"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/country"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="52dp"
+                    android:text="@string/national_average"
+                    android:textColor="@color/palette_turquoise"
+                    app:layout_constraintBottom_toTopOf="@+id/country_bar"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="250dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="52dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/your_emissions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toStartOf="@+id/user_bar"
+                    app:layout_constraintTop_toTopOf="@+id/user_bar" />
+
+                <TextView
+                    android:id="@+id/country_emissions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    app:layout_constraintEnd_toStartOf="@+id/country_bar"
+                    app:layout_constraintTop_toTopOf="@+id/country_bar" />
+
+                <TextView
+                    android:id="@+id/yaxis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="88dp"
+                    android:rotation="270"
+                    android:text="@string/emitted_co2_year_tons"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/user_bar" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/extraInfo"
+            android:layout_width="357dp"
+            android:layout_height="173dp"
+            android:layout_marginTop="52dp"
+            android:background="@color/white"
+            android:clickable="true"
+            android:contentDescription="@string/emission_breakdown_by_category"
+            android:elevation="-1dp"
+            android:focusable="true"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.462"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/trend1graph_card">
+
+            <LinearLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/countryStat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comparison_by_country"
+                    android:textAlignment="center"
+                    android:textColor="@color/palette_black"
+                    android:textSize="15sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginBottom="30dp"/>
+
+                <TextView
+                    android:id="@+id/globalTargetStat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/comparison_to_global_target"
+                    android:textAlignment="center"
+                    android:textColor="@color/palette_black"
+                    android:textSize="15sp"
+                    android:textStyle="italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/homeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:text="@string/home"
+            android:layout_margin="10dp"
+            android:textColor="@color/palette_black"
+            app:layout_constraintTop_toBottomOf="@id/extraInfo"
+            app:layout_constraintEnd_toEndOf="@+id/extraInfo"/>
+
+        <Button
+            android:id="@+id/retakeSurveyBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            android:text="@string/retake"
+            android:layout_margin="10dp"
+            android:textColor="@color/palette_black"
+            app:layout_constraintTop_toBottomOf="@id/extraInfo"
+            app:layout_constraintStart_toStartOf="@+id/extraInfo"/>
+
+        <TextView
+            android:id="@+id/stats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:text="@string/statistics"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@id/extraInfo"
+            app:layout_constraintStart_toStartOf="@id/extraInfo"/>
+
+        <View
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            app:layout_constraintTop_toBottomOf="@id/extraInfo"
+            app:layout_constraintBottom_toBottomOf="parent">
+        </View>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

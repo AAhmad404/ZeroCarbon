@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/EcoTrackerFragment">
+
+    <fragment
+        android:id="@+id/EcoGaugeFragment"
+        android:name="com.example.planetze.EcoGaugeFragment"
+        android:label="@string/eco_gauge"
+        tools:layout="@layout/fragment_eco_gauge">
+    </fragment>
+    <fragment
+        android:id="@+id/EcoTrackerFragment"
+        android:name="com.example.planetze.EcoTrackerFragment"
+        android:label="@string/eco_tracker"
+        tools:layout="@layout/fragment_eco_tracker" >
+        <action
+            android:id="@+id/action_EcoTrackerFragment_to_AddActivity"
+            app:destination="@id/AddActivity" />
+        <action
+            android:id="@+id/action_EcoTrackerFragment_to_AddHabit"
+            app:destination="@id/AddHabit" />
+    </fragment>
+    <fragment
+        android:id="@+id/AddActivity"
+        android:name="com.example.planetze.AddActivity"
+        android:label="fragment_add_activity"
+        tools:layout="@layout/fragment_add_activity">
+    </fragment>
+    <fragment
+        android:id="@+id/AddHabit"
+        android:name="com.example.planetze.AddHabit"
+        android:label="fragment_add_habit"
+        tools:layout="@layout/fragment_add_habit">
+    </fragment>
+    <fragment
+        android:id="@+id/EcoBalanceFragment"
+        android:name="com.example.planetze.EcoBalanceFragment"
+        android:label="@string/eco_balance"
+        tools:layout="@layout/fragment_eco_balance_fragment" />
+    <fragment
+        android:id="@+id/EcoHubEntryFragment"
+        android:name="com.example.planetze.EcoHubEntryFragment"
+        android:label="@string/eco_hub"
+        tools:layout="@layout/fragment_eco_hub_entry_" />
+    <fragment
+        android:id="@+id/LoginView"
+        android:name="com.example.planetze.Login.LoginView"
+        android:label="@string/login_label"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/action_LoginView_to_EcoTrackerFragment"
+            app:destination="@id/EcoTrackerFragment" />
+    </fragment>
+</navigation>
