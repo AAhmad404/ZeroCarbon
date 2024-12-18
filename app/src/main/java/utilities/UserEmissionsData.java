@@ -46,6 +46,7 @@ public class UserEmissionsData {
      */
     public interface DataReadyListener {
         void onDataReady();
+
         void onError(String errorMessage);
     }
 
@@ -99,6 +100,7 @@ public class UserEmissionsData {
                     }
                 }
             }
+
             @Override
             public void onFailed(DatabaseError databaseError) {
                 if (listener != null) {
@@ -142,7 +144,6 @@ public class UserEmissionsData {
      *
      * @return the total number of days since the user first logged an activity,
      * or 0 if no activity data is available.
-     *
      */
     public int totalDaysSinceFirstLoggedActivity() {
         if (!userHasData()) {
@@ -161,7 +162,7 @@ public class UserEmissionsData {
      * number of days.
      *
      * @param days The number of days over which the emissions should be calculated.
-     * @return the total emissions in kilograms of CO2e over the given number of days, or 0 
+     * @return the total emissions in kilograms of CO2e over the given number of days, or 0
      * if no activity data is available.
      * @see #getTotalEmissions(int)
      * @see #generateEmissionsData(int)
@@ -287,8 +288,8 @@ public class UserEmissionsData {
             Add one to the month since months in Calendar class go from 0-11 and return the day
             before in the yyyy-mm-dd format.
          */
-        return calendar.get(Calendar.YEAR) +"-"+(calendar.get(Calendar.MONTH)+1)+"-"
-                +calendar.get(Calendar.DAY_OF_MONTH);
+        return calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-"
+                + calendar.get(Calendar.DAY_OF_MONTH);
     }
 
     /**
@@ -318,7 +319,7 @@ public class UserEmissionsData {
 
             // Convert the time difference in milliseconds to days
             return (int) (diffInMillis / (1000 * 60 * 60 * 24));
-        } catch(ParseException e) {
+        } catch (ParseException e) {
             throw new RuntimeException(e);
         }
     }
@@ -328,14 +329,14 @@ public class UserEmissionsData {
      *
      * @param days The number of days for which the emissions data should be generated.
      * @return A list of {@link EmissionNodeCollection} representing the emissions data for the
-     *         given number of days, or null if there is no user data.
+     * given number of days, or null if there is no user data.
      * @see #getRawData(int)
      * @see #getInterpolatedData(int)
      */
     private List<EmissionNodeCollection> generateEmissionsData(int days) {
         if (!userHasData())
             return null;
-        return interpolate? getInterpolatedData(days) : getRawData(days);
+        return interpolate ? getInterpolatedData(days) : getRawData(days);
     }
 
     /**
@@ -374,8 +375,8 @@ public class UserEmissionsData {
      * Retrieves interpolated emissions data for the given number of days.
      *
      * @param days The number of days for which interpolated emissions data should be calculated
-     *            and retrieved.
-     * @return  A list of {@link EmissionNodeCollection} representing interpolated emissions data.
+     *             and retrieved.
+     * @return A list of {@link EmissionNodeCollection} representing interpolated emissions data.
      */
     private List<EmissionNodeCollection> getInterpolatedData(int days) {
         // Get the current date in the format yyyy-mm-dd
@@ -428,10 +429,10 @@ public class UserEmissionsData {
     /**
      * Interpolates emissions data between two existing data points for a specific date.
      *
-     * @param data1 The emissions data in form of a {@link EmissionNodeCollection}
-     *             for the first known date (x1).
-     * @param data2 The emissions data in form of a {@link EmissionNodeCollection}
-     *              for the second known date (x2).
+     * @param data1   The emissions data in form of a {@link EmissionNodeCollection}
+     *                for the first known date (x1).
+     * @param data2   The emissions data in form of a {@link EmissionNodeCollection}
+     *                for the second known date (x2).
      * @param newDate The date for which emissions data needs to be interpolated (x1 <= x <= x2) .
      * @return An {@link EmissionNodeCollection} containing the interpolated emissions data.
      */

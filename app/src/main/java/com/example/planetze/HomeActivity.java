@@ -64,7 +64,6 @@ public class HomeActivity extends AppCompatActivity {
                 UserData.initialize(getApplicationContext());
                 Intent j = new Intent(getApplicationContext(), SettingActivity.class);
                 startActivity(j);
-
             }
         });
     }

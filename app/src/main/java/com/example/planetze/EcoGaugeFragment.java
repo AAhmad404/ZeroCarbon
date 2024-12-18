@@ -142,27 +142,27 @@ public class EcoGaugeFragment extends Fragment
                 new UserEmissionsData.DataReadyListener() {
 
                     @Override
-            public void onDataReady() {
-                if (userEmissionsData.userHasData()) {
-                    // Hide loading indicator when data is ready
-                    loadingIndicator.setVisibility(View.GONE);
+                    public void onDataReady() {
+                        if (userEmissionsData.userHasData()) {
+                            // Hide loading indicator when data is ready
+                            loadingIndicator.setVisibility(View.GONE);
 
-                    // Un hide the charts and show the data.
-                    unHideUI();
-                    updateUI();
-                } else {
-                    String text = "Add activities to the EcoTracker to begin.";
-                    emissionsOverviewTextView.setText(text);
-                }
-            }
+                            // Un hide the charts and show the data.
+                            unHideUI();
+                            updateUI();
+                        } else {
+                            String text = "Add activities to the EcoTracker to begin.";
+                            emissionsOverviewTextView.setText(text);
+                        }
+                    }
 
-            @Override
-            public void onError(String errorMessage) {
-                // If an error occurs
-                unHideUI();
-                showError(errorMessage);
-            }
-        });
+                    @Override
+                    public void onError(String errorMessage) {
+                        // If an error occurs
+                        unHideUI();
+                        showError(errorMessage);
+                    }
+                });
 
         this.timePeriodToggle = view.findViewById(R.id.time_period_toggle);
 
@@ -193,6 +193,7 @@ public class EcoGaugeFragment extends Fragment
                 String selectedItem = (String) parent.getItemAtPosition(position);
                 renderComparisonChart(selectedItem);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 renderComparisonChart(defaultCountry);
@@ -278,7 +279,7 @@ public class EcoGaugeFragment extends Fragment
      * based on the selected time period.
      */
     private String getUserEmissionsText() {
-        switch(timePeriod) {
+        switch (timePeriod) {
             case DAILY:
                 return "You emitted "
                         + Math.round(userEmissionsData.getUserEmissions(DAILY) * 100) / 100.0
@@ -305,7 +306,7 @@ public class EcoGaugeFragment extends Fragment
     /**
      * Renders the trend graph which displays the user's emissions data
      * over the selected time period.
-    */
+     */
     private void renderEmissionsTrendGraph() {
         ArrayList<Entry> entries = new ArrayList<>();
 
@@ -490,7 +491,8 @@ public class EcoGaugeFragment extends Fragment
      */
     private void renderComparisonChart(String country) {
         Double countryPerCapitaEmissions;
-        float userEmissions = userEmissionsData.getUserEmissions(timePeriod);;
+        float userEmissions = userEmissionsData.getUserEmissions(timePeriod);
+        ;
 
         /*
             Since OVERALL = Integer.MAX_VALUE and getComparableEmissionsDataKG retrieves comparable
@@ -503,7 +505,7 @@ public class EcoGaugeFragment extends Fragment
             int daysSinceFirstLoggedActivity = userEmissionsData.totalDaysSinceFirstLoggedActivity();
 
             // Make sure the number comparable days is at least one.
-            int comparableDays = daysSinceFirstLoggedActivity == 0?
+            int comparableDays = daysSinceFirstLoggedActivity == 0 ?
                     1 : daysSinceFirstLoggedActivity;
 
             countryPerCapitaEmissions = countryEmissions.getComparableEmissionsDataKG(country,
@@ -563,13 +565,13 @@ public class EcoGaugeFragment extends Fragment
      * Calculates and displays the percentage difference between the user's emissions and the
      * per capita emissions of a given country.
      * <p>
-     *  - Display the percentage in green if the user's emissions is less than the countries.
-     *  - Display the percentage in red if the user's emissions if greater than the countries.
-     *  - Display the percentage in gray if the user's emissions are equal to the countries.
+     * - Display the percentage in green if the user's emissions is less than the countries.
+     * - Display the percentage in red if the user's emissions if greater than the countries.
+     * - Display the percentage in gray if the user's emissions are equal to the countries.
      *
-     * @param userEmissions the user's emissions for the selected time period.
+     * @param userEmissions    the user's emissions for the selected time period.
      * @param countryEmissions the per capita emissions of the specified country over
-     *                                  the selected time period.
+     *                         the selected time period.
      */
     private void showComparisonPercentage(float userEmissions, float countryEmissions) {
         double epsilon = 0.01;
@@ -629,26 +631,36 @@ public class EcoGaugeFragment extends Fragment
      * Ignore un-utilized methods from the OnChartGestureListener and OnChartValueSelectedListener
      * interface
      */
-    
-    @Override
-    public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {}
 
     @Override
-    public void onChartLongPressed(MotionEvent me) {}
+    public void onChartGestureStart(MotionEvent me, ChartTouchListener.ChartGesture lastPerformedGesture) {
+    }
 
     @Override
-    public void onChartDoubleTapped(MotionEvent me) {}
+    public void onChartLongPressed(MotionEvent me) {
+    }
 
     @Override
-    public void onChartSingleTapped(MotionEvent me) {}
-    @Override
-    public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {}
-    @Override
-    public void onChartScale(MotionEvent me, float scaleX, float scaleY) {}
+    public void onChartDoubleTapped(MotionEvent me) {
+    }
 
     @Override
-    public void onChartTranslate(MotionEvent me, float dX, float dY) {}
+    public void onChartSingleTapped(MotionEvent me) {
+    }
 
     @Override
-    public void onNothingSelected() {}
+    public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
+    }
+
+    @Override
+    public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
+    }
+
+    @Override
+    public void onChartTranslate(MotionEvent me, float dX, float dY) {
+    }
+
+    @Override
+    public void onNothingSelected() {
+    }
 }

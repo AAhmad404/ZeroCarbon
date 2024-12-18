@@ -68,18 +68,18 @@ public class EcoBalanceDestinationFragment extends Fragment {
             }
         });
 
-    CardView crd4 = view.findViewById(R.id.cd4);
+        CardView crd4 = view.findViewById(R.id.cd4);
         crd4.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-           WasteFragment wasteFragment = new WasteFragment();
-            FragmentManager fragmentManager = getParentFragmentManager();
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-            fragmentTransaction.replace(R.id.eco_balance_destination, wasteFragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
-        }
-    });
+            @Override
+            public void onClick(View v) {
+                WasteFragment wasteFragment = new WasteFragment();
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.eco_balance_destination, wasteFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+        });
 
         CardView crd5 = view.findViewById(R.id.cd5);
         crd5.setOnClickListener(new View.OnClickListener() {

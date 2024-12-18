@@ -16,7 +16,6 @@ public class FarmersFragment extends Fragment {
     TextView textView1;
 
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,15 +23,12 @@ public class FarmersFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_farmers_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_farmers_fragment, container, false);
 
         textView1 = view.findViewById(R.id.bt5);
         textView1.setMovementMethod(LinkMovementMethod.getInstance());
-
-
 
 
         return view;

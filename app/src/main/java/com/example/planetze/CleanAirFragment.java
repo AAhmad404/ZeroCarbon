@@ -27,7 +27,7 @@ public class CleanAirFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_clean__air_, container, false);
+        View view = inflater.inflate(R.layout.fragment_clean__air_, container, false);
 
         textview1 = view.findViewById(R.id.bt1);
         textview1.setMovementMethod(LinkMovementMethod.getInstance());

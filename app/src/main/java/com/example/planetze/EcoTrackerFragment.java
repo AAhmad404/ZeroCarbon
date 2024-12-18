@@ -53,8 +53,8 @@ public class EcoTrackerFragment extends Fragment {
     private FirebaseDatabase db;
     public static String userId;
     private static DatabaseReference calendarRef;  //this is static so that we can call fetchSnapshot()
-            //from addActivity fragment when returning to ecotrackerfragment in order to update
-            //ecotracker activity info upon return
+    //from addActivity fragment when returning to ecotrackerfragment in order to update
+    //ecotracker activity info upon return
     private static DatabaseReference habitsRef;  //^^same with this
     private static ValueEventListener activitiesListener;  //^^same with this
     private static ValueEventListener habitsListener;
@@ -90,7 +90,9 @@ public class EcoTrackerFragment extends Fragment {
             date = args.getString("date");
             if (args.containsKey("habitsToggled"))
                 habitsToggled = args.getBoolean("habitsToggled");
-        } else {presetCalendar = 0;}
+        } else {
+            presetCalendar = 0;
+        }
 
         AddHabit.getEmissionsSnapshot(userId);
     }
@@ -98,15 +100,13 @@ public class EcoTrackerFragment extends Fragment {
     /**
      * MAIN INITIALIZATION CODE HERE
      *
-     *
-     * @param inflater The LayoutInflater object that can be used to inflate
-     * any views in the fragment,
-     * @param container If non-null, this is the parent view that the fragment's
-     * UI should be attached to.  The fragment should not add the view itself,
-     * but this can be used to generate the LayoutParams of the view.
+     * @param inflater           The LayoutInflater object that can be used to inflate
+     *                           any views in the fragment,
+     * @param container          If non-null, this is the parent view that the fragment's
+     *                           UI should be attached to.  The fragment should not add the view itself,
+     *                           but this can be used to generate the LayoutParams of the view.
      * @param savedInstanceState If non-null, this fragment is being re-constructed
-     * from a previous saved state as given here.
-     *
+     *                           from a previous saved state as given here.
      * @return
      */
     @Override
@@ -123,7 +123,7 @@ public class EcoTrackerFragment extends Fragment {
         calendarRef = db.getReference(USER_DATA)
                 .child(userId).child("calendar");
         habitsRef = db.getReference().child(USER_DATA)
-                        .child(userId).child("current_habits");
+                .child(userId).child("current_habits");
 
         final Button calendarToggle = view.findViewById(R.id.calendarToggle);  //button to toggle calendar
         final TextView dateText = view.findViewById(R.id.dateText);
@@ -166,8 +166,10 @@ public class EcoTrackerFragment extends Fragment {
                 } else {
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
         };
         habitsListener = new ValueEventListener() {
             @Override
@@ -177,8 +179,10 @@ public class EcoTrackerFragment extends Fragment {
                 } else currentHabits = new ArrayList<>();  //makes it empty
                 updateDisplay();
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         };
 
         //initializes everything
@@ -288,8 +292,10 @@ public class EcoTrackerFragment extends Fragment {
                             fetchSnapshot();
                         }
                     }
+
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {}
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
                 });
             }
         });
@@ -300,9 +306,10 @@ public class EcoTrackerFragment extends Fragment {
 
     /**
      * Deletes an activity from the firebase rtdb.
+     *
      * @param dateRef the date in which the activity is logged
-     * @param acts the activities of the aforementioned date
-     * @param id the id of the activity we want to delete
+     * @param acts    the activities of the aforementioned date
+     * @param id      the id of the activity we want to delete
      */
     public void delFromFirebase(DatabaseReference dateRef, List<List<String>> acts, int id,
                                 TextView noActivities) {
@@ -323,12 +330,13 @@ public class EcoTrackerFragment extends Fragment {
 
     /**
      * Initializes eco tracker UI
-     * @param listener ValueEventListener to listen for firebase updates
-     * @param d TextView for displaying current date in form "11 Nov" or "21 Sep"
-     * @param y TextView for displaying current year in standard form
-     * @param activities RadioGroup in which the radiobutton activities are displayed
-     * @param noActivities  TextView with message "no activities logged yet for today"
-     * @param dailyTotal TextView displaying the day's total emissions
+     *
+     * @param listener     ValueEventListener to listen for firebase updates
+     * @param d            TextView for displaying current date in form "11 Nov" or "21 Sep"
+     * @param y            TextView for displaying current year in standard form
+     * @param activities   RadioGroup in which the radiobutton activities are displayed
+     * @param noActivities TextView with message "no activities logged yet for today"
+     * @param dailyTotal   TextView displaying the day's total emissions
      */
     public void initUI(ValueEventListener listener, TextView d, TextView y,
                        RadioGroup activities, TextView noActivities, TextView dailyTotal) {
@@ -343,7 +351,9 @@ public class EcoTrackerFragment extends Fragment {
                     + today.get(Calendar.DAY_OF_MONTH);
         } else {  //occurs if start EcoTracker from AddActivity instead of through bottom bar/nav
             String[] t = date.split("-");
-            String day = t[2]; String month = months[Integer.parseInt(t[1]) - 1]; String year = t[0];
+            String day = t[2];
+            String month = months[Integer.parseInt(t[1]) - 1];
+            String year = t[0];
             String x = day + " " + month;
             d.setText(x);
             y.setText(year);
@@ -420,7 +430,8 @@ public class EcoTrackerFragment extends Fragment {
         RadioGroup rg = globalView.findViewById(R.id.activitiesGroup);
         TextView emptyMsg = globalView.findViewById(R.id.emptyMsg);
 
-        rg.clearCheck(); rg.removeAllViews();
+        rg.clearCheck();
+        rg.removeAllViews();
         emptyMsg.setVisibility(View.INVISIBLE);
         emptyMsg.setText("No habits adopted yet");
 
@@ -461,7 +472,8 @@ public class EcoTrackerFragment extends Fragment {
         TextView emptyMsg = globalView.findViewById(R.id.emptyMsg);
         TextView dailyTotal = globalView.findViewById(R.id.dailyTotal);
 
-        activities.clearCheck(); activities.removeAllViews();
+        activities.clearCheck();
+        activities.removeAllViews();
         emptyMsg.setVisibility(View.INVISIBLE);
         emptyMsg.setText("No activities today yet");
 
@@ -505,7 +517,8 @@ public class EcoTrackerFragment extends Fragment {
 
     /**
      * From the firebase rtdb, retrieves the activity we want to edit
-     * @param id index of the activity as in the firebase
+     *
+     * @param id     index of the activity as in the firebase
      * @param userId id of the user who's using the app currently (as in the firebase)
      * @return
      */
@@ -541,8 +554,10 @@ public class EcoTrackerFragment extends Fragment {
                     fragmentTransaction.commit();
                 }
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
         });
     }
 
@@ -563,7 +578,6 @@ public class EcoTrackerFragment extends Fragment {
     }
 
 
-
     private boolean isHabit(List<String> list) {
         return list.size() == 3;
     }
@@ -573,8 +587,10 @@ public class EcoTrackerFragment extends Fragment {
         TextView dateText = globalView.findViewById(R.id.dateText);
         TextView yearText = globalView.findViewById(R.id.yearText);
 
-        int d = day.getDay(); int m = day.getMonth(); int y = day.getYear();
-        String date1 = d + " " + months[m-1];
+        int d = day.getDay();
+        int m = day.getMonth();
+        int y = day.getYear();
+        String date1 = d + " " + months[m - 1];
         dateText.setText(date1);
         yearText.setText(String.valueOf(y));
         date = y + "-" + m + "-" + d;

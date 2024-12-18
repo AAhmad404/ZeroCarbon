@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddHabit"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".AddHabit">
 
     <!-- Constraint layout as main parent -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,19 +19,19 @@
             android:layout_width="281dp"
             android:layout_height="61dp"
             android:layout_marginTop="20dp"
+            android:backgroundTint="@color/white"
             android:queryHint="Search for a habit..."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:backgroundTint="@color/white"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ListView
-            android:nestedScrollingEnabled="true"
             android:id="@+id/listView"
             android:layout_width="347dp"
             android:layout_height="232dp"
             android:layout_marginTop="4dp"
             android:listSelector="@drawable/list_item_selector"
+            android:nestedScrollingEnabled="true"
             app:layout_constraintEnd_toEndOf="@+id/searchView"
             app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintStart_toStartOf="@+id/searchView"
@@ -68,7 +68,7 @@
                 android:textColor="@color/palette_light_gray"
                 app:backgroundTint="@color/custom_button_group_background"
                 app:rippleColor="@color/palette_turquoise_tint_200"
-                app:strokeColor="@color/palette_turquoise"/>
+                app:strokeColor="@color/palette_turquoise" />
 
             <Button
                 android:id="@+id/yourHabitsBtn"
@@ -79,7 +79,7 @@
                 android:textColor="@color/palette_light_gray"
                 app:backgroundTint="@color/custom_button_group_background"
                 app:rippleColor="@color/palette_turquoise_tint_200"
-                app:strokeColor="@color/palette_turquoise"/>
+                app:strokeColor="@color/palette_turquoise" />
 
             <Button
                 android:id="@+id/recommendedBtn"
@@ -90,7 +90,7 @@
                 android:textColor="@color/palette_light_gray"
                 app:backgroundTint="@color/custom_button_group_background"
                 app:rippleColor="@color/palette_turquoise_tint_200"
-                app:strokeColor="@color/palette_turquoise"/>
+                app:strokeColor="@color/palette_turquoise" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
@@ -166,10 +166,10 @@
             android:text="@string/recommendation_description"
             android:textAlignment="center"
             android:textStyle="bold|italic"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/listView"
             app:layout_constraintEnd_toEndOf="@+id/listView"
-            app:layout_constraintStart_toStartOf="@+id/listView"
-            android:visibility="invisible"/>
+            app:layout_constraintStart_toStartOf="@+id/listView" />
 
         <TextView
             android:id="@+id/noRecs"
@@ -180,11 +180,11 @@
             android:textColor="@color/palette_turquoise"
             android:textSize="20sp"
             android:textStyle="bold|italic"
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/recommendedDescription"
             app:layout_constraintEnd_toEndOf="@+id/listView"
             app:layout_constraintStart_toStartOf="@+id/listView"
-            app:layout_constraintTop_toBottomOf="@+id/searchView"
-            android:visibility="invisible"/>
+            app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
         <TextView
             android:id="@+id/issuePrompt1"
@@ -192,27 +192,27 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="@string/issue_prompt_add_habit"
-            android:textColor="@color/palette_black"
-            android:textStyle="italic|bold"
             android:textAlignment="center"
+            android:textColor="@color/palette_black"
             android:textSize="15sp"
+            android:textStyle="italic|bold"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/applyFilterBtn"
             app:layout_constraintHorizontal_bias="0.547"
             app:layout_constraintStart_toStartOf="@+id/backBtn"
-            app:layout_constraintTop_toBottomOf="@+id/backBtn"
-            android:visibility="invisible"/>
+            app:layout_constraintTop_toBottomOf="@+id/backBtn" />
 
         <TextView
             android:id="@+id/issuePrompt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/issue_prompt_star"
-            android:textStyle="bold|italic"
             android:textColor="@color/red"
             android:textSize="15sp"
+            android:textStyle="bold|italic"
+            android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/issuePrompt1"
-            app:layout_constraintTop_toTopOf="@+id/issuePrompt1"
-            android:visibility="invisible"/>
+            app:layout_constraintTop_toTopOf="@+id/issuePrompt1" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,11 +20,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.media3.common.util.Log;
+
 import com.example.planetze.databinding.ActivityEcoBalanceDestinationBinding;
 import com.example.planetze.databinding.ActivityEcoBalanceDestinationBinding;
-
-
 
 
 import androidx.media3.common.util.UnstableApi;
@@ -56,18 +56,17 @@ public class Payment extends AppCompatActivity {
     PaymentSheet paymentSheet;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         @NonNull ActivityPaymentBinding binding = ActivityPaymentBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        btn =  findViewById(R.id.button2);
+        btn = findViewById(R.id.button2);
 
         // allows ows us to speak from our app to stripe
         PaymentConfiguration.init(this, PUSHABLE_KEY);
         // sets up paymentsheet
-        paymentSheet =  new PaymentSheet(this,paymentSheetResult -> {
+        paymentSheet = new PaymentSheet(this, paymentSheetResult -> {
             onPaymentResult(paymentSheetResult);
         });
 
@@ -79,7 +78,6 @@ public class Payment extends AppCompatActivity {
         });
 
 
-
         String url = "https://api.stripe.com/v1/customers";
 
 
@@ -89,7 +87,7 @@ public class Payment extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     clientid = jsonObject.getString("id");
-                    Toast.makeText(Payment.this,clientid, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Payment.this, clientid, Toast.LENGTH_SHORT).show();
                     getEphermalKey();
 
                 } catch (JSONException e) {
@@ -101,21 +99,19 @@ public class Payment extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String>  map = new HashMap<>();
-                map.put("Authorization","Bearer "+SECRET_KEY);
+                Map<String, String> map = new HashMap<>();
+                map.put("Authorization", "Bearer " + SECRET_KEY);
                 return map;
             }
         };
 
         // sets up a list for possible network requests
-        RequestQueue requestQueue =  Volley.newRequestQueue(Payment.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(Payment.this);
         requestQueue.add(stringRequest);
-
-
 
 
     }
@@ -129,7 +125,7 @@ public class Payment extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     Ephermalkey = jsonObject.getString("id");
-                    Toast.makeText(Payment.this,Ephermalkey, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Payment.this, Ephermalkey, Toast.LENGTH_SHORT).show();
                     getClientSecret(clientid, Ephermalkey);
 
                 } catch (JSONException e) {
@@ -141,13 +137,13 @@ public class Payment extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String>  map = new HashMap<>();
-                map.put("Authorization","Bearer "+SECRET_KEY);
-                map.put("Stripe-Version","2024-11-20.acacia");
+                Map<String, String> map = new HashMap<>();
+                map.put("Authorization", "Bearer " + SECRET_KEY);
+                map.put("Stripe-Version", "2024-11-20.acacia");
 
                 return map;
             }
@@ -155,13 +151,13 @@ public class Payment extends AppCompatActivity {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String>  map = new HashMap<>();
+                Map<String, String> map = new HashMap<>();
                 map.put("customer", clientid);
                 return map;
             }
         };
 
-        RequestQueue requestQueue =  Volley.newRequestQueue(Payment.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(Payment.this);
         requestQueue.add(stringRequest);
     }
 
@@ -174,7 +170,7 @@ public class Payment extends AppCompatActivity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     ClientSecret = jsonObject.getString("client_secret");
-                    Toast.makeText(Payment.this,ClientSecret, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Payment.this, ClientSecret, Toast.LENGTH_SHORT).show();
 
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
@@ -185,12 +181,12 @@ public class Payment extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }){
+        }) {
 
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
-                Map<String, String>  map = new HashMap<>();
-                map.put("Authorization","Bearer "+SECRET_KEY);
+                Map<String, String> map = new HashMap<>();
+                map.put("Authorization", "Bearer " + SECRET_KEY);
 
                 return map;
             }
@@ -198,7 +194,7 @@ public class Payment extends AppCompatActivity {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String>  map = new HashMap<>();
+                Map<String, String> map = new HashMap<>();
                 map.put("customer", clientid);
                 map.put("amount", "1000" + "00");
                 map.put("currency", "cad");
@@ -208,22 +204,20 @@ public class Payment extends AppCompatActivity {
             }
         };
 
-        RequestQueue requestQueue =  Volley.newRequestQueue(Payment.this);
+        RequestQueue requestQueue = Volley.newRequestQueue(Payment.this);
         requestQueue.add(stringRequest);
 
     }
 
     private void paymentflow() {
         // if (Ephermalkey != null)
-        paymentSheet.presentWithPaymentIntent(ClientSecret, new PaymentSheet.Configuration("Plantze",
-                new PaymentSheet.CustomerConfiguration(clientid, Ephermalkey)));
+        paymentSheet.presentWithPaymentIntent(ClientSecret, new PaymentSheet.Configuration("Plantze", new PaymentSheet.CustomerConfiguration(clientid, Ephermalkey)));
     }
+
     private void onPaymentResult(PaymentSheetResult paymentSheetResult) {
-        if (paymentSheetResult instanceof PaymentSheetResult.Completed){
-            Toast.makeText(this,"DONE", Toast.LENGTH_SHORT).show();
-    }
-        else
-            Toast.makeText(this,"LOOK not working", Toast.LENGTH_SHORT).show();
+        if (paymentSheetResult instanceof PaymentSheetResult.Completed) {
+            Toast.makeText(this, "DONE", Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(this, "LOOK not working", Toast.LENGTH_SHORT).show();
 
 
     }

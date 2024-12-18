@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 /**
  * This class represents a collection of different emission categories along with their amounts.
+ *
  * @see EmissionNode
  */
 public class EmissionNodeCollection {

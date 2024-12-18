@@ -36,7 +36,8 @@ import java.util.Set;
  */
 public class CalendarFragment extends DialogFragment {
     static View globalView;
-    static FirebaseDatabase db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");;
+    static FirebaseDatabase db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");
+
     String userId = EcoTrackerFragment.userId;  //this is legal because CalendarFragment is only ever called through ecotracker
 
     public CalendarFragment() {
@@ -74,6 +75,7 @@ public class CalendarFragment extends DialogFragment {
     /**
      * Sets little color decorators on each day that has activities logged so user can easily
      * know which days to navigate to to see logged activities
+     *
      * @param userId
      */
     public static void setCalendarDecorators(String userId) {
@@ -101,14 +103,17 @@ public class CalendarFragment extends DialogFragment {
                     public boolean shouldDecorate(CalendarDay day) {
                         return eventDates.contains(day);
                     }
+
                     @Override
                     public void decorate(DayViewFacade view) {
                         view.addSpan(new DotSpan(10, Color.MAGENTA));
                     }
                 });
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
 }

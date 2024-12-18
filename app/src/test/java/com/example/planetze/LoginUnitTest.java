@@ -24,13 +24,16 @@ import com.example.planetze.Login.LoginView;
  */
 @RunWith(MockitoJUnitRunner.Silent.class)
 public class LoginUnitTest {
-    @Mock LoginModel model;
-    @Mock LoginView view;
-    @Mock Context context;
+    @Mock
+    LoginModel model;
+    @Mock
+    LoginView view;
+    @Mock
+    Context context;
 
     @Test
     public void testNullEmail() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.loginUser(null, "password123");
 
         verify(view).setMessage("Email cannot be empty");
@@ -38,7 +41,7 @@ public class LoginUnitTest {
 
     @Test
     public void testEmptyEmail() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.loginUser("", "password123");
 
         verify(view).setMessage("Email cannot be empty");
@@ -46,7 +49,7 @@ public class LoginUnitTest {
 
     @Test
     public void testEmptyEmailWithSpace() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.loginUser("     ", "password123");
 
         verify(view).setMessage("Email cannot be empty");
@@ -54,7 +57,7 @@ public class LoginUnitTest {
 
     @Test
     public void testNullPassword() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.loginUser("test@gmail.com", null);
 
         verify(view).setMessage("Password cannot be empty");
@@ -62,7 +65,7 @@ public class LoginUnitTest {
 
     @Test
     public void testEmptyPassword() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.loginUser("test@gmail.com", "");
 
         verify(view).setMessage("Password cannot be empty");
@@ -70,7 +73,7 @@ public class LoginUnitTest {
 
     @Test
     public void testEmptyPasswordWithSpace() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.loginUser("jiangminki0@gmail.com", "  ");
 
         verify(view).setMessage("Password cannot be empty");
@@ -78,7 +81,7 @@ public class LoginUnitTest {
 
     @Test
     public void testValidCredentials() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.loginUser("Email@gmail.com", "password");
 
         verify(model).loginUser("Email@gmail.com", "password", presenter);
@@ -86,7 +89,7 @@ public class LoginUnitTest {
 
     @Test
     public void testMessage() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.setMessage("message");
 
         verify(view).setMessage("message");
@@ -94,7 +97,7 @@ public class LoginUnitTest {
 
     @Test
     public void testTakeToSurvey() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.takeToSurvey();
 
         verify(view).takeToSurvey();
@@ -102,7 +105,7 @@ public class LoginUnitTest {
 
     @Test
     public void testTakeToHub() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.takeToHub();
 
         verify(view).takeToHub();
@@ -111,14 +114,14 @@ public class LoginUnitTest {
     @Test
     public void testGetViewContext() {
         when(view.getContext()).thenReturn(context);
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
 
         assertEquals(presenter.getViewContext(), context);
     }
 
     @Test
     public void testSignUpLauncher() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.setSignUpLauncher();
 
         verify(view).setSignUpLauncher();
@@ -126,7 +129,7 @@ public class LoginUnitTest {
 
     @Test
     public void testSignInResult() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.onSignInResult(null);
 
         verify(model).onSignInResult(null, presenter);
@@ -134,7 +137,7 @@ public class LoginUnitTest {
 
     @Test
     public void testStartGoogleSignIn() {
-        LoginPresenter presenter = new LoginPresenter(model,view);
+        LoginPresenter presenter = new LoginPresenter(model, view);
         presenter.startGoogleSignIn();
 
         verify(view).startGoogleSignIn();

@@ -9,7 +9,6 @@ import static utilities.Constants.STAY_LOGGED_ON;
 import static utilities.Constants.USER_DATA;
 import static utilities.Constants.USERNAME;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -19,10 +18,8 @@ import androidx.appcompat.app.AlertDialog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -65,45 +62,32 @@ public class SettingActivity extends AppCompatActivity {
 
         returnButton.setOnClickListener(view -> {
             UserData.initialize(getApplicationContext());
-            Intent j = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(j);
+            Intent homeActivity = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(homeActivity);
+            finish();
         });
 
-        changeName.setOnClickListener(view -> {
-            setChangeNamePopup();
-        });
+        changeName.setOnClickListener(view -> setChangeNamePopup());
 
         logoutButton.setOnClickListener(view -> {
             UserData.logout(getApplicationContext());
             loadFragment(new LoginView());
         });
 
-        deleteAccountButton.setOnClickListener(view -> {
-            setDeleteAccountPopup();
-        });
+        deleteAccountButton.setOnClickListener(view -> setDeleteAccountPopup());
 
-        stayLoggedOnSwitch.setOnClickListener(view -> {
-            switchFunction(userID, STAY_LOGGED_ON, stayLoggedOnSwitch);
-        });
+        stayLoggedOnSwitch.setOnClickListener(view -> switchFunction(userID, STAY_LOGGED_ON, stayLoggedOnSwitch));
 
+        interpolateEmissionsDataSwitch.setOnClickListener(view -> switchFunction(userID, INTERPOLATE_EMISSIONS_DATA, interpolateEmissionsDataSwitch));
 
-        interpolateEmissionsDataSwitch.setOnClickListener(view -> {
-            switchFunction(userID, INTERPOLATE_EMISSIONS_DATA, interpolateEmissionsDataSwitch);
+        hideGridLinesSwitch.setOnClickListener(view -> switchFunction(userID, HIDE_GRID_LINES, hideGridLinesSwitch));
 
-        });
-
-        hideGridLinesSwitch.setOnClickListener(view -> {
-            switchFunction(userID, HIDE_GRID_LINES, hideGridLinesSwitch);
-        });
-
-        hideTrendLinePointsSwitch.setOnClickListener(view -> {
-            switchFunction(userID, HIDE_TREND_LINE_POINTS, hideTrendLinePointsSwitch);
-        });
+        hideTrendLinePointsSwitch.setOnClickListener(view -> switchFunction(userID, HIDE_TREND_LINE_POINTS, hideTrendLinePointsSwitch));
     }
 
     private void showMessage(String msg) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle(msg+"\n\n\n");
+        alert.setTitle(msg + "\n\n\n");
         alert.show();
     }
 
@@ -116,29 +100,20 @@ public class SettingActivity extends AppCompatActivity {
         EditText input = new EditText(getApplicationContext());
         alert.setView(input);
 
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int whichButton) {
-                String nameText = input.getText().toString().trim();
-                if (nameText.isEmpty()) {
-                    showMessage("New name cannot be empty");
-                }
-                else {
-                    userRef.child(userID+"/name").setValue(nameText);
-                    showMessage("Name changed successfully");
-                    UserData.initialize(getApplicationContext());
-                    name.setText(nameText);
-                }
-                dialog.cancel();
+        alert.setPositiveButton("Ok", (dialog, whichButton) -> {
+            String nameText = input.getText().toString().trim();
+            if (nameText.isEmpty()) {
+                showMessage("New name cannot be empty");
+            } else {
+                userRef.child(userID + "/name").setValue(nameText);
+                showMessage("Name changed successfully");
+                UserData.initialize(getApplicationContext());
+                name.setText(nameText);
             }
+            dialog.cancel();
         });
 
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int whichButton) {
-                dialog.cancel();
-            }
-        });
+        alert.setNegativeButton("Cancel", (dialog, whichButton) -> dialog.cancel());
 
         alert.show();
     }
@@ -149,31 +124,23 @@ public class SettingActivity extends AppCompatActivity {
         builder.setTitle("Are you sure you want to delete this account?");
         builder.setMessage("This action cannot be undone");
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                UserData.deleteAccount(getApplicationContext());
-                loadFragment(new LoginView());
-                showMessage("Account deleted successfully");
-                dialog.cancel();
-            }
+        builder.setPositiveButton("Yes", (dialog, which) -> {
+            UserData.deleteAccount(getApplicationContext());
+            loadFragment(new LoginView());
+            showMessage("Account deleted successfully");
+            dialog.cancel();
         });
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
+        builder.setNegativeButton("No", (dialog, which) -> dialog.cancel());
 
         AlertDialog alert = builder.create();
         alert.show();
     }
 
     private void initializeSwitch() {
-        boolean stayLoggedOn = UserData.getSetting(getApplicationContext(),STAY_LOGGED_ON);
-        boolean interpolateEmissionsData = UserData.getSetting(getApplicationContext(),INTERPOLATE_EMISSIONS_DATA);
-        boolean hideGridLines = UserData.getSetting(getApplicationContext(),HIDE_GRID_LINES);
+        boolean stayLoggedOn = UserData.getSetting(getApplicationContext(), STAY_LOGGED_ON);
+        boolean interpolateEmissionsData = UserData.getSetting(getApplicationContext(), INTERPOLATE_EMISSIONS_DATA);
+        boolean hideGridLines = UserData.getSetting(getApplicationContext(), HIDE_GRID_LINES);
         boolean hideTrendLinePoints = UserData.getSetting(getApplicationContext(), HIDE_TREND_LINE_POINTS);
 
         stayLoggedOnSwitch.setChecked(stayLoggedOn);
@@ -205,11 +172,11 @@ public class SettingActivity extends AppCompatActivity {
 
     private void switchFunction(String userID, String settingName, SwitchMaterial settingSwitch) {
         if (settingSwitch.isChecked()) {
-            userRef.child(userID+"/settings/"+settingName).setValue(true);
+            userRef.child(userID + "/settings/" + settingName).setValue(true);
+        } else {
+            userRef.child(userID + "/settings/" + settingName).setValue(false);
         }
-        else {
-            userRef.child(userID+"/settings/"+settingName).setValue(false);
-        }
+
         UserData.initialize(getApplicationContext());
     }
 

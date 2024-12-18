@@ -55,7 +55,9 @@ public class SurveyResults extends Fragment {
     public SurveyResults(boolean b) {
         returnToEcoTracker = b;
     }
-    public SurveyResults(){}
+
+    public SurveyResults() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -100,8 +102,10 @@ public class SurveyResults extends Fragment {
                 initComparisonGraph(view);  //initializes comparison graph
                 setUserDataComparisonGraph(view, userE);
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {}
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
         });
 
         //spinner change listener
@@ -115,6 +119,7 @@ public class SurveyResults extends Fragment {
 
                 setCountryStats(view, position);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 setComparisonGraph(view, defaultCountry);
@@ -195,6 +200,7 @@ public class SurveyResults extends Fragment {
 
                 setComparisonGraph(view, defaultCountry);  //set UI
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -204,6 +210,7 @@ public class SurveyResults extends Fragment {
 
     /**
      * Updates the comparison graph based on current spinner setting
+     *
      * @param c the country selected by spinner for which we display average emissions
      */
     private void setComparisonGraph(View view, String c) {
@@ -222,7 +229,7 @@ public class SurveyResults extends Fragment {
                 125, display_metrics);
         //next line is main formula. Math.abs() used in the case that user emissions are < 0
         int height_in_p =
-                (int) Math.min(max_p, Math.max(min_p, Math.abs((countryE/userE) * height_user_in_p)));
+                (int) Math.min(max_p, Math.max(min_p, Math.abs((countryE / userE) * height_user_in_p)));
 
         //sets bar height of compared country
         TextView bar = view.findViewById(R.id.country_bar);
@@ -242,6 +249,7 @@ public class SurveyResults extends Fragment {
      * Sets the bar representing user emissions in the comparison graph.
      * Reason we need this is to adjust user emissions bar to be very low if needed.
      * Otherwise default setting of user bar is about half the size of the container
+     *
      * @param e user emissions
      */
     private void setUserDataComparisonGraph(View view, double e) {
@@ -301,6 +309,7 @@ public class SurveyResults extends Fragment {
 
     /**
      * shows what percent the user's emissions are of the national average for the selected country
+     *
      * @param view
      * @param index the index of the selected country in the country array
      */
@@ -340,6 +349,7 @@ public class SurveyResults extends Fragment {
 
     /**
      * Converts array of carbon emissions in kg to tons
+     *
      * @param list array of carbon emissions in kg
      * @return array of carbon emissions in tons
      */
@@ -373,6 +383,7 @@ public class SurveyResults extends Fragment {
     /**
      * Self-explanatory. Java has no built-in array.indexOf function,
      * need one to convert spinner selection to country emissions
+     *
      * @param arr
      * @param item
      * @return
@@ -381,7 +392,8 @@ public class SurveyResults extends Fragment {
         int x = 0;
         for (int i = 0; i < arr.length; i++) {
             if (arr[i].equals(item)) {
-                x = i; break;
+                x = i;
+                break;
             }
         }
         return x;
