@@ -20,7 +20,7 @@ public class EmissionNode {
     /**
      * EmissionsNode constructor method.
      *
-     * @param emissionType  the type of emission (e.g., "Energy", "Food", "Transportation", ...).
+     * @param emissionType   the type of emission (e.g., "Energy", "Food", "Transportation", ...).
      * @param emissionAmount the amount of the emission in a kilograms.
      */
     public EmissionNode(String emissionType, float emissionAmount) {

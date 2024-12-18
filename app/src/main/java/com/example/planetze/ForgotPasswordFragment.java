@@ -87,8 +87,7 @@ public class ForgotPasswordFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_forgot_password, container, false);
 
@@ -134,7 +133,7 @@ public class ForgotPasswordFragment extends Fragment {
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     setMessage("Password reset link sent! Please check your email");
-                }else{
+                } else {
                     setMessage("There was an error in sending verification email, please try again");
                 }
             }
@@ -156,7 +155,7 @@ public class ForgotPasswordFragment extends Fragment {
             message.setTextSize(18);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(50,20,20,20);
+            params.setMargins(50, 20, 20, 20);
             message.setLayoutParams(params);
         }
 
@@ -170,7 +169,7 @@ public class ForgotPasswordFragment extends Fragment {
                 DataSnapshot users = task.getResult();
                 //emailArray = new ArrayList<String>();
                 boolean equalsEmail = false;
-                for(DataSnapshot user:users.getChildren()) {
+                for (DataSnapshot user : users.getChildren()) {
                     String currentemail = " ";
                     if (user.hasChild("email")) {
                         currentemail = user.child("email").getValue(String.class).toString().trim();
@@ -182,11 +181,9 @@ public class ForgotPasswordFragment extends Fragment {
                 }
                 if (equalsEmail) {
                     sendPassResetEmail(email);
-                }
-                else if (email.trim().isEmpty()) {
+                } else if (email.trim().isEmpty()) {
                     setMessage("Email cannot be empty");
-                }
-                else {
+                } else {
                     setMessage("There isn't an account accociated with that email");
                 }
 

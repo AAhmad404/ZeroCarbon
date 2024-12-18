@@ -1,6 +1,7 @@
 package com.example.planetze;
 
 import android.content.Intent;
+
 import static androidx.navigation.fragment.FragmentKt.findNavController;
 import static java.security.AccessController.getContext;
 
@@ -44,8 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         //This block only for when user selects "Retake Survey" from survey results page
         Intent intent = getIntent();
-        if (intent.hasExtra("retakeSurvey") &&
-        intent.getBooleanExtra("retakeSurvey", false)) {
+        if (intent.hasExtra("retakeSurvey") && intent.getBooleanExtra("retakeSurvey", false)) {
             loadFragment(new SurveyFragment());
             return;
         }
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         userRef.get().addOnCompleteListener(task -> {
             DataSnapshot users = task.getResult();
             String userID = UserData.getUserID(getApplicationContext());
-            for(DataSnapshot user:users.getChildren()) {
+            for (DataSnapshot user : users.getChildren()) {
                 Object inu = user.child("is_new_user").getValue();
                 boolean cond1 = user.getKey().toString().trim().equals(userID);
                 boolean cond2 = inu != null && inu.toString().equals("true");
@@ -90,8 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 if (cond1 && cond2) {
                     loadFragment(new SurveyFragment());
                     break;
-                }
-                else if (cond1) {
+                } else if (cond1) {
                     navigateToHomeActivity();
                     break;
                 }
@@ -109,15 +108,14 @@ public class MainActivity extends AppCompatActivity {
     private void onOpenApp() {
         if (!UserData.isLoggedIn(getApplicationContext())) {
             loadFragment(new LoginView());
-        }
-        else {
+        } else {
             takeToHomePage();
         }
     }
 
     private void initializeData() {
         boolean isLoggedIn = UserData.isLoggedIn(getApplicationContext());
-        boolean stayLoggedOn = UserData.getSetting(getApplicationContext(),STAY_LOGGED_ON);
+        boolean stayLoggedOn = UserData.getSetting(getApplicationContext(), STAY_LOGGED_ON);
         if (isLoggedIn && !stayLoggedOn) {
             UserData.logout(getApplicationContext());
         }

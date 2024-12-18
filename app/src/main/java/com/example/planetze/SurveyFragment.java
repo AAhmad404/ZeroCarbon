@@ -60,7 +60,8 @@ public class SurveyFragment extends Fragment {
     private TextView question;
     private RadioGroup options;
 
-    public SurveyFragment() {}
+    public SurveyFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -76,18 +77,20 @@ public class SurveyFragment extends Fragment {
 
     /**
      * Updates survey UI to reflect current question being asked
-     * @param options answer options component (RadioGroup)
+     *
+     * @param options  answer options component (RadioGroup)
      * @param question question text component (TextView)
      * @param category category text component (TextView)
-     * @param q current question
-     * @param c current category
+     * @param q        current question
+     * @param c        current category
      */
     private void updateSurvey(RadioGroup options, TextView question, TextView category,
                               int q, int c) {
         category.setText(categories[c]);
         question.setText(questions[q][0]);  //displays next q
 
-        options.removeAllViews(); options.clearCheck();  //remove previous answer options
+        options.removeAllViews();
+        options.clearCheck();  //remove previous answer options
         for (int i = 1; i < questions[q].length; i++) { //loading answer options for the new q
             RadioButton btn = new RadioButton(getContext());
             btn.setId(i - 1);  //standard btn configurations
@@ -100,27 +103,31 @@ public class SurveyFragment extends Fragment {
 
     /**
      * Updates the global arrays containing user answers for each category
+     *
      * @param options ; button container for answer option buttons
-     * @param cat ; the current category of questions being asked in the survey
+     * @param cat     ; the current category of questions being asked in the survey
      * @return true if answer selected, false if no answer selected
      */
     protected boolean saveAnswer(RadioGroup options, int cat, int q) {
         int btnId = options.getCheckedRadioButtonId();
         if (btnId == -1) return false;
 
-        switch(cat) {
+        switch (cat) {
             case 0:
                 saveDefaultCountry(btnId);
                 break;
             case 1:
-                transport_ans[q-2] = btnId;
-                if (q == 2 && transport_ans[0] == 1) current_q += 2;  //skips follow-ups if user says no to car
-                if (q == 5 && transport_ans[3] == 0) current_q += 1;  //same but for public transport
+                transport_ans[q - 2] = btnId;
+                if (q == 2 && transport_ans[0] == 1)
+                    current_q += 2;  //skips follow-ups if user says no to car
+                if (q == 5 && transport_ans[3] == 0)
+                    current_q += 1;  //same but for public transport
                 break;
             case 2:
                 //index subtractions rely on construction of questions array
                 food_ans[q - num_transport_qs - 3] = btnId;
-                if (q == 10 && food_ans[0] != 3) current_q += 4;  //skips follow-ups if user says no to meat
+                if (q == 10 && food_ans[0] != 3)
+                    current_q += 4;  //skips follow-ups if user says no to meat
                 break;
             case 3:
                 housing_ans[q - num_transport_qs - num_food_qs - 4] = btnId;
@@ -134,10 +141,11 @@ public class SurveyFragment extends Fragment {
 
     /**
      * Computes emissions per category, given the category of questions just finished
+     *
      * @param cat the category of qs just finished
      */
     protected void computeCatEmissions(int cat) {
-        switch(cat) {
+        switch (cat) {
             case 1:
                 co2PerCategory[0] = transportEmissions();
                 break;
@@ -155,6 +163,7 @@ public class SurveyFragment extends Fragment {
 
     /**
      * Computes user's total annual carbon emissions (in kg) based on initialization survey answers
+     *
      * @return double representing total annual transport emissions (in kg)
      */
     protected double transportEmissions() {
@@ -168,49 +177,86 @@ public class SurveyFragment extends Fragment {
         double totalkg = 0.0;
         double r = 0.0;
         if (transport_ans[0] != 1) {  //true corresponds to user saying "yes" to "do u use car?"
-            switch(transport_ans[1]) {  //which car they drive
-                case 0: r = 0.24;
+            switch (transport_ans[1]) {  //which car they drive
+                case 0:
+                    r = 0.24;
                     c.put("default_car", "gasoline");
                     break;  //gas emissions rate
-                case 1: r = 0.27;
+                case 1:
+                    r = 0.27;
                     c.put("default_car", "diesel");
                     break;  //diesel, etc.
-                case 2: r = 0.16;
+                case 2:
+                    r = 0.16;
                     c.put("default_car", "hybrid");
                     break;  //hybrid
-                case 3: r = 0.05;
+                case 3:
+                    r = 0.05;
                     c.put("default_car", "electric");
                     break;  //electric
-                default: r = 0.16;
+                default:
+                    r = 0.16;
                     c.put("default_car", "none");
                     break;  //"i don't know" answer (rate of emissions defaults to that of hybrid)
             }
-            switch(transport_ans[2]) {  //how much they drive
-                case 0: totalkg += r * 5000; break;  //constants are distances driven
-                case 1: totalkg += r * 10000; break;
-                case 2: totalkg += r * 15000; break;
-                case 3: totalkg += r * 20000; break;
-                case 4: totalkg += r * 25000; break;
-                default: totalkg += r * 35000; break;
+            switch (transport_ans[2]) {  //how much they drive
+                case 0:
+                    totalkg += r * 5000;
+                    break;  //constants are distances driven
+                case 1:
+                    totalkg += r * 10000;
+                    break;
+                case 2:
+                    totalkg += r * 15000;
+                    break;
+                case 3:
+                    totalkg += r * 20000;
+                    break;
+                case 4:
+                    totalkg += r * 25000;
+                    break;
+                default:
+                    totalkg += r * 35000;
+                    break;
             }
-        } else {c.put("default_car", "none");}
+        } else {
+            c.put("default_car", "none");
+        }
         userRef.updateChildren(c);  //adds default car component to user data for use in EcoTracker
 
         totalkg += public_transport_emissions[transport_ans[3]][transport_ans[4]];  //see Constants.java
 
-        switch(transport_ans[5]) {  //short haul flight emissions
-            case 0: break;
-            case 1: totalkg += 225; break;
-            case 2: totalkg += 600; break;
-            case 3: totalkg += 1200; break;
-            default: totalkg += 1800; break;
+        switch (transport_ans[5]) {  //short haul flight emissions
+            case 0:
+                break;
+            case 1:
+                totalkg += 225;
+                break;
+            case 2:
+                totalkg += 600;
+                break;
+            case 3:
+                totalkg += 1200;
+                break;
+            default:
+                totalkg += 1800;
+                break;
         }
-        switch(transport_ans[6]) {  //long haul flight emissions
-            case 0: break;
-            case 1: totalkg += 825; break;
-            case 2: totalkg += 2200; break;
-            case 3: totalkg += 4400; break;
-            default: totalkg += 6600; break;
+        switch (transport_ans[6]) {  //long haul flight emissions
+            case 0:
+                break;
+            case 1:
+                totalkg += 825;
+                break;
+            case 2:
+                totalkg += 2200;
+                break;
+            case 3:
+                totalkg += 4400;
+                break;
+            default:
+                totalkg += 6600;
+                break;
         }
 
         return totalkg;
@@ -218,48 +264,92 @@ public class SurveyFragment extends Fragment {
 
     /**
      * Computes total annual user emissions from food consumption based on survey input
+     *
      * @return double representing total annual user emissions from food consumption
      */
     protected double foodEmissions() {
         double totalkg = 0.0;
         boolean meat = false;
         switch (food_ans[0]) {
-            case 0: totalkg += 1000;break;
-            case 1: totalkg += 500;break;
-            case 2: totalkg += 1500;break;
-            default: meat = true;break;
+            case 0:
+                totalkg += 1000;
+                break;
+            case 1:
+                totalkg += 500;
+                break;
+            case 2:
+                totalkg += 1500;
+                break;
+            default:
+                meat = true;
+                break;
         }
         if (meat) {
             switch (food_ans[1]) {
-                case 0: totalkg += 2500;break;
-                case 1: totalkg += 1900;break;
-                case 2: totalkg += 1300;break;
-                default: break;
+                case 0:
+                    totalkg += 2500;
+                    break;
+                case 1:
+                    totalkg += 1900;
+                    break;
+                case 2:
+                    totalkg += 1300;
+                    break;
+                default:
+                    break;
             }
             switch (food_ans[2]) {
-                case 0: totalkg += 1450;break;
-                case 1: totalkg += 860;break;
-                case 2: totalkg += 450;break;
-                default: break;
+                case 0:
+                    totalkg += 1450;
+                    break;
+                case 1:
+                    totalkg += 860;
+                    break;
+                case 2:
+                    totalkg += 450;
+                    break;
+                default:
+                    break;
             }
             switch (food_ans[3]) {
-                case 0: totalkg += 950;break;
-                case 1: totalkg += 600;break;
-                case 2: totalkg += 200;break;
-                default: break;
+                case 0:
+                    totalkg += 950;
+                    break;
+                case 1:
+                    totalkg += 600;
+                    break;
+                case 2:
+                    totalkg += 200;
+                    break;
+                default:
+                    break;
             }
             switch (food_ans[4]) {
-                case 0: totalkg += 800;break;
-                case 1: totalkg += 500;break;
-                case 2: totalkg += 150;break;
-                default: break;
+                case 0:
+                    totalkg += 800;
+                    break;
+                case 1:
+                    totalkg += 500;
+                    break;
+                case 2:
+                    totalkg += 150;
+                    break;
+                default:
+                    break;
             }
         }
         switch (food_ans[5]) {
-            case 0: break;
-            case 1: totalkg += 23.4;break;
-            case 2: totalkg += 70.2;break;
-            default: totalkg += 140.4;break;
+            case 0:
+                break;
+            case 1:
+                totalkg += 23.4;
+                break;
+            case 2:
+                totalkg += 70.2;
+                break;
+            default:
+                totalkg += 140.4;
+                break;
         }
 
         return totalkg;
@@ -267,6 +357,7 @@ public class SurveyFragment extends Fragment {
 
     /**
      * Computes total annual emissions from housing related energy use based on survey input
+     *
      * @return double representing total emissions (in kg) from housing
      */
     protected double housingEmissions() {
@@ -274,47 +365,75 @@ public class SurveyFragment extends Fragment {
         int[] i = housing_ans;
         if (i[3] != i[5]) totalkg += 233;
 
-        if (i[0] == 4) i[0] = 2;  //sets "other" answer option to "townhouse" (as instructed in formula spreadsheet)
+        if (i[0] == 4)
+            i[0] = 2;  //sets "other" answer option to "townhouse" (as instructed in formula spreadsheet)
         if (i[3] == 5) i[3] = 1;  //sets "other" answer option to "electricity" (by assumption)
-        if (i[5] == 5) i[5] = 1;  //^^ Piazza post SHOULD but has not yet clarified if this is what we are to do.
-                                //profs have not yet specified what to do in this scenario so we will assume
-                                //that it is reasonable to default "other" to electricity
+        if (i[5] == 5)
+            i[5] = 1;  //^^ Piazza post SHOULD but has not yet clarified if this is what we are to do.
+        //profs have not yet specified what to do in this scenario so we will assume
+        //that it is reasonable to default "other" to electricity
         totalkg += housing_emissions[i[0]][i[1]][i[2]][i[4]][i[3]];  //home heating (i[3]; fourth question of category)
         totalkg += housing_emissions[i[0]][i[1]][i[2]][i[4]][i[5]];  //water heating (i[5]; sixth question of category)
-        switch(i[6]) {  //7th question of housing category; re: renewable energy use
+        switch (i[6]) {  //7th question of housing category; re: renewable energy use
             case 0:
-                totalkg -= 6000; break;  //primarily use renewable energy
+                totalkg -= 6000;
+                break;  //primarily use renewable energy
             case 1:
-                totalkg -= 4000; break;  //partially use " ... "
-            default: break;  //no use of renewable energy
+                totalkg -= 4000;
+                break;  //partially use " ... "
+            default:
+                break;  //no use of renewable energy
         }
         return totalkg;
     }
 
     /**
      * Computes total annual user carbon emissions related to consumption based on init survey results
+     *
      * @return double representing total annual user consumption-related emissions
      */
     protected double consumptionEmissions() {
         double totalkg = 0.0;
         int[] i = consumption_ans;  //for convenience
-        switch(i[0]) {  //how often they buy clothes
-            case 0: totalkg += 360; break;
-            case 1: totalkg += 120; break;
-            case 2: totalkg += 100; break;
-            default: totalkg += 5; break;
+        switch (i[0]) {  //how often they buy clothes
+            case 0:
+                totalkg += 360;
+                break;
+            case 1:
+                totalkg += 120;
+                break;
+            case 2:
+                totalkg += 100;
+                break;
+            default:
+                totalkg += 5;
+                break;
         }
-        switch(i[1]) {  //how often they recycle
-            case 0: totalkg *= 0.5; break;
-            case 1: totalkg *= 0.7; break;
-            default: break;
+        switch (i[1]) {  //how often they recycle
+            case 0:
+                totalkg *= 0.5;
+                break;
+            case 1:
+                totalkg *= 0.7;
+                break;
+            default:
+                break;
         }
-        switch(i[2]) {  //how many electronic devices they buy
-            case 0: break;
-            case 1: totalkg += 300; break;
-            case 2: totalkg += 600; break;
-            case 3: totalkg += 900; break;
-            default: totalkg += 1200; break;
+        switch (i[2]) {  //how many electronic devices they buy
+            case 0:
+                break;
+            case 1:
+                totalkg += 300;
+                break;
+            case 2:
+                totalkg += 600;
+                break;
+            case 3:
+                totalkg += 900;
+                break;
+            default:
+                totalkg += 1200;
+                break;
         }
         totalkg -= recycling_reduction[i[2]][i[0]][i[3]];  //how often they recycle (see Constants.java)
 
@@ -342,8 +461,6 @@ public class SurveyFragment extends Fragment {
         }
         return s;
     }
-
-
 
 
     private void initSurvey(View view) {
@@ -398,10 +515,13 @@ public class SurveyFragment extends Fragment {
                 System.out.println(current_q);
                 //if no answer selected, should not proceed. Should prompt user to answer
                 if (!saveAnswer(options, current_cat, current_q)) {  //saves user's answer to prev question
-                    pleaseAnswer1.setVisibility(View.VISIBLE); pleaseAnswer2.setVisibility(View.VISIBLE);
+                    pleaseAnswer1.setVisibility(View.VISIBLE);
+                    pleaseAnswer2.setVisibility(View.VISIBLE);
                     return;
-                } else backBtn.setVisibility(View.VISIBLE);  // this is here to avoid back being visible on first question
-                pleaseAnswer1.setVisibility(View.INVISIBLE); pleaseAnswer2.setVisibility(View.INVISIBLE);
+                } else
+                    backBtn.setVisibility(View.VISIBLE);  // this is here to avoid back being visible on first question
+                pleaseAnswer1.setVisibility(View.INVISIBLE);
+                pleaseAnswer2.setVisibility(View.INVISIBLE);
 
                 current_q++;  //iterates to next q
                 if (current_q >= num_qs) {  //true if survey is finished
@@ -427,7 +547,8 @@ public class SurveyFragment extends Fragment {
                 if (questions[current_q][0].equals("-")) {  //iter'n to next category if necessary
                     if (current_cat != 0)
                         computeCatEmissions(current_cat);  //computes emissions for the finished category (unless we just did first question)
-                    current_q++; current_cat++;
+                    current_q++;
+                    current_cat++;
                 }
                 updateSurvey(options, question, category, current_q, current_cat);  //updates UI
             }
@@ -440,9 +561,12 @@ public class SurveyFragment extends Fragment {
              */
             public void onClick(View v) {
                 System.out.println(current_q);
-                if (current_q == 5 && transport_ans[0] == 1) current_q -= 2;  //skips follow-ups if user says no to car
-                if (current_q == 7 && transport_ans[3] == 0) current_q -= 1;  //same but for public transport
-                if (current_q == 15 && food_ans[0] != 3) current_q -= 4;  //skips follow-ups if user says no to meat
+                if (current_q == 5 && transport_ans[0] == 1)
+                    current_q -= 2;  //skips follow-ups if user says no to car
+                if (current_q == 7 && transport_ans[3] == 0)
+                    current_q -= 1;  //same but for public transport
+                if (current_q == 15 && food_ans[0] != 3)
+                    current_q -= 4;  //skips follow-ups if user says no to meat
 
                 current_q--;
                 if (questions[current_q][0].equals("-")) {
@@ -459,6 +583,7 @@ public class SurveyFragment extends Fragment {
 
     /**
      * saves the country chosen in "area of residence" as default country of the user.
+     *
      * @param btnId
      */
     private void saveDefaultCountry(int btnId) {

@@ -1,19 +1,18 @@
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EcoGaugeFragment"
     android:background="@color/palette_turquoise"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context=".EcoGaugeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginTop="2dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
 
         <!-- Main Text -->
         <TextView
@@ -31,26 +30,26 @@
         <!-- Loading Indicator -->
         <ProgressBar
             android:id="@+id/loading_bar"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:minHeight="40dp"
-            android:minWidth="40dp" />
+            android:layout_weight="1"
+            android:minWidth="40dp"
+            android:minHeight="40dp" />
 
         <!-- Trend Graph Card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/trend_graph_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="5dp"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
+            android:background="@color/white"
             android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="10dp"
             android:contentDescription="@string/emission_breakdown_by_category"
-            android:background="@color/white">
+            android:elevation="5dp"
+            android:focusable="true"
+            app:cardCornerRadius="10dp">
 
             <!-- Trend Graph -->
             <com.github.mikephil.charting.charts.LineChart
@@ -67,22 +66,21 @@
             android:id="@+id/emissions_breakdown_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="5dp"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
+            android:background="@color/white"
             android:clickable="true"
+            android:elevation="5dp"
             android:focusable="true"
-            app:cardCornerRadius="10dp"
-            android:background="@color/white">
+            app:cardCornerRadius="10dp">
 
             <!-- Emissions breakdown PieChart -->
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pie_chart"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_margin="5dp">
-            </com.github.mikephil.charting.charts.PieChart>
+                android:layout_margin="5dp"></com.github.mikephil.charting.charts.PieChart>
         </androidx.cardview.widget.CardView>
 
         <!-- Comparison Chart Card -->
@@ -90,14 +88,14 @@
             android:id="@+id/comparison_chart_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="5dp"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
+            android:background="@color/white"
             android:clickable="true"
+            android:elevation="5dp"
             android:focusable="true"
-            app:cardCornerRadius="10dp"
-            android:background="@color/white">
+            app:cardCornerRadius="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -109,8 +107,8 @@
                     android:id="@+id/bar_chart"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:layout_margin="5dp" />
+                    android:layout_margin="5dp"
+                    android:layout_weight="1" />
 
                 <!-- Divider -->
                 <View
@@ -123,8 +121,8 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_weight="1"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <TextView
@@ -139,9 +137,9 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginRight="10dp"
                         android:layout_margin="5dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         android:background="@color/palette_light_gray" />
 
                     <!-- Country Selection Spinner -->
@@ -149,22 +147,21 @@
                         android:id="@+id/spinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="7dp"
                         android:layout_margin="10dp"
                         android:background="@drawable/custom_spinner"
-                        android:popupBackground="@color/white"
                         android:dropDownWidth="match_parent"
-                        android:textAlignment="center"/>
+                        android:padding="7dp"
+                        android:popupBackground="@color/white"
+                        android:textAlignment="center" />
 
                     <TextView
                         android:id="@+id/comparison_percentage_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="15dp"
+                        android:gravity="center"
                         android:text="@string/n_a"
-                        android:textSize="20sp"
-                        android:gravity="center">
-                    </TextView>
+                        android:textSize="20sp"></TextView>
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -173,16 +170,15 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:elevation="5dp"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="15dp"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardCornerRadius="25dp"
             android:background="@color/white"
-            >
+            android:clickable="true"
+            android:elevation="5dp"
+            android:focusable="true"
+            app:cardCornerRadius="25dp">
 
             <!-- Timeline Selector -->
             <com.google.android.material.button.MaterialButtonToggleGroup
@@ -191,9 +187,9 @@
                 android:layout_height="match_parent"
                 android:layout_margin="8dp"
                 android:gravity="center"
-                app:singleSelection="true"
+                app:checkedButton="@+id/button_monthly"
                 app:selectionRequired="true"
-                app:checkedButton="@+id/button_monthly">
+                app:singleSelection="true">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/button_daily"

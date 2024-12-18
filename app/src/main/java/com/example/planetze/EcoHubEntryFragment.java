@@ -31,30 +31,24 @@ public class EcoHubEntryFragment extends Fragment {
         CardView crd2 = view.findViewById(R.id.market_trends);
         crd2.isClickable();
 
-        crd1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                LearningResourcesFragment learningResourcesFragment = new LearningResourcesFragment();
-                FragmentManager fragmentManager = getChildFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nati, learningResourcesFragment, "tag");
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+        crd1.setOnClickListener(view1 -> {
+            LearningResourcesFragment learningResourcesFragment = new LearningResourcesFragment();
+            FragmentManager fragmentManager = getChildFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.nati, learningResourcesFragment, "tag");
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
-            }
         });
 
-        crd2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                MarketTrendsFragment marketTrendsFragment = new MarketTrendsFragment();
-                FragmentManager fragmentManager = getChildFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.nati, marketTrendsFragment, "tag");
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+        crd2.setOnClickListener(view2 -> {
+            MarketTrendsFragment marketTrendsFragment = new MarketTrendsFragment();
+            FragmentManager fragmentManager = getChildFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.nati, marketTrendsFragment, "tag");
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
-            }
         });
 
         // Inflate the layout for this fragment

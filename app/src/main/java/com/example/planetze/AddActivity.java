@@ -41,7 +41,7 @@ import utilities.Constants;
 import utilities.UserData;
 
 /**
- * A simple {@link Fragment} subclass.
+ * A {@link Fragment} subclass.
  * create an instance of this fragment.
  */
 public class AddActivity extends Fragment {
@@ -78,6 +78,7 @@ public class AddActivity extends Fragment {
      * editing is passed in the parameters so that it can be edited.
      * @param d
      * @param activity
+     * @param i
      */
     public AddActivity(String d, List<String> activity, int i) {
         date = d;

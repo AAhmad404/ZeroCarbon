@@ -2,11 +2,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/eco_tracker"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EcoTrackerFragment"
     android:background="@color/default_background_white"
-    android:id="@+id/eco_tracker">
+    tools:context=".EcoTrackerFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,244 +18,244 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/constraintLayout">
+            android:layout_height="wrap_content">
 
-        <!-- mini calendar image displaying selected date-->
+            <!-- mini calendar image displaying selected date-->
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginTop="64dp"
-            android:text="@string/todays_total"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/dailyTotal"
-            android:layout_width="263dp"
-            android:layout_height="40dp"
-            android:background="@color/palette_turquoise"
-            android:gravity="center"
-            android:text="@string/daily_total_default_emissions"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/title"
-            app:layout_constraintStart_toStartOf="@+id/title"
-            app:layout_constraintTop_toBottomOf="@+id/title"
-            tools:layout_editor_absoluteX="64dp"
-            tools:layout_editor_absoluteY="87dp" />
-
-        <ImageView
-            android:id="@+id/date"
-            android:layout_width="107dp"
-            android:layout_height="101dp"
-            android:layout_marginTop="28dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dailyTotal"
-            app:srcCompat="@drawable/calendarday" />
-
-        <TextView
-            android:id="@+id/dateText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
-            android:text="@string/_11_nov"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/date"
-            app:layout_constraintHorizontal_bias="0.488"
-
-            app:layout_constraintStart_toStartOf="@+id/date"
-            app:layout_constraintTop_toTopOf="@+id/date" />
-
-        <TextView
-            android:id="@+id/yearText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/current_year"
-            app:layout_constraintEnd_toEndOf="@+id/dateText"
-            app:layout_constraintStart_toStartOf="@+id/dateText"
-            app:layout_constraintTop_toBottomOf="@+id/dateText" />
-
-        <!-- calendar stuff below -->
-
-        <Button
-            android:id="@+id/calendarToggle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/view_calendar"
-            app:layout_constraintEnd_toEndOf="@+id/date"
-            app:layout_constraintHorizontal_bias="0.515"
-            app:layout_constraintStart_toStartOf="@+id/date"
-            app:layout_constraintTop_toBottomOf="@+id/date"
-            tools:layout_editor_absoluteX="123dp"
-            tools:layout_editor_absoluteY="259dp" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/calendarView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/palette_light_gray"
-            android:elevation="2dp"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/calendarToggle"
-            app:layout_constraintVertical_bias="0.499"></androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <!-- activities and habits stuff below -->
-        <com.google.android.material.button.MaterialButtonToggleGroup
-            android:id="@+id/toggleBtn"
-            android:layout_width="220dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-            app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-            app:layout_constraintStart_toStartOf="@+id/scrollView2"
-            app:selectionRequired="true"
-            app:singleSelection="true">
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/activitiesBtn"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/activities_btn"
-                android:textColor="@color/palette_light_gray"
-                app:backgroundTint="@color/custom_button_group_background"
-                app:rippleColor="@color/palette_turquoise_tint_200"
-                app:strokeColor="@color/palette_turquoise" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/habitsBtn"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="0dp"
+                android:layout_marginTop="64dp"
+                android:text="@string/todays_total"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/dailyTotal"
+                android:layout_width="263dp"
+                android:layout_height="40dp"
+                android:background="@color/palette_turquoise"
+                android:gravity="center"
+                android:text="@string/daily_total_default_emissions"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/title"
+                app:layout_constraintStart_toStartOf="@+id/title"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                tools:layout_editor_absoluteX="64dp"
+                tools:layout_editor_absoluteY="87dp" />
+
+            <ImageView
+                android:id="@+id/date"
+                android:layout_width="107dp"
+                android:layout_height="101dp"
+                android:layout_marginTop="28dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dailyTotal"
+                app:srcCompat="@drawable/calendarday" />
+
+            <TextView
+                android:id="@+id/dateText"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/habits_btn"
-                android:textColor="@color/palette_light_gray"
-                app:backgroundTint="@color/custom_button_group_background"
-                app:rippleColor="@color/palette_turquoise_tint_200"
-                app:strokeColor="@color/palette_turquoise" />
-        </com.google.android.material.button.MaterialButtonToggleGroup>
+                android:layout_marginTop="44dp"
+                android:text="@string/_11_nov"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/date"
+                app:layout_constraintHorizontal_bias="0.488"
+
+                app:layout_constraintStart_toStartOf="@+id/date"
+                app:layout_constraintTop_toTopOf="@+id/date" />
+
+            <TextView
+                android:id="@+id/yearText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/current_year"
+                app:layout_constraintEnd_toEndOf="@+id/dateText"
+                app:layout_constraintStart_toStartOf="@+id/dateText"
+                app:layout_constraintTop_toBottomOf="@+id/dateText" />
+
+            <!-- calendar stuff below -->
+
+            <Button
+                android:id="@+id/calendarToggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/view_calendar"
+                app:layout_constraintEnd_toEndOf="@+id/date"
+                app:layout_constraintHorizontal_bias="0.515"
+                app:layout_constraintStart_toStartOf="@+id/date"
+                app:layout_constraintTop_toBottomOf="@+id/date"
+                tools:layout_editor_absoluteX="123dp"
+                tools:layout_editor_absoluteY="259dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/calendarView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/palette_light_gray"
+                android:elevation="2dp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/calendarToggle"
+                app:layout_constraintVertical_bias="0.499"></androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <Button
-            android:id="@+id/addBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/add_btn"
-            app:layout_constraintStart_toStartOf="@+id/scrollView2"
-            app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-            tools:layout_editor_absoluteX="64dp"
-            tools:layout_editor_absoluteY="632dp" />
+            <!-- activities and habits stuff below -->
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/toggleBtn"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+                app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+                app:layout_constraintStart_toStartOf="@+id/scrollView2"
+                app:selectionRequired="true"
+                app:singleSelection="true">
 
-        <Button
-            android:id="@+id/editBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/edit_btn"
-            app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="@+id/scrollView2"
-            app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-            tools:layout_editor_absoluteX="170dp"
-            tools:layout_editor_absoluteY="616dp" />
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/activitiesBtn"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/activities_btn"
+                    android:textColor="@color/palette_light_gray"
+                    app:backgroundTint="@color/custom_button_group_background"
+                    app:rippleColor="@color/palette_turquoise_tint_200"
+                    app:strokeColor="@color/palette_turquoise" />
 
-        <Button
-            android:id="@+id/delBtn"
-            android:layout_width="98dp"
-            android:layout_height="52dp"
-            android:text="@string/delete_btn"
-            app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-            app:layout_constraintTop_toBottomOf="@+id/scrollView2"
-            tools:layout_editor_absoluteX="279dp"
-            tools:layout_editor_absoluteY="616dp" />
-
-        <ScrollView
-            android:nestedScrollingEnabled="true"
-            android:id="@+id/scrollView2"
-            android:layout_width="344dp"
-            android:layout_height="171dp"
-            android:layout_marginTop="104dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calendarToggle">
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/habitsBtn"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/habits_btn"
+                    android:textColor="@color/palette_light_gray"
+                    app:backgroundTint="@color/custom_button_group_background"
+                    app:rippleColor="@color/palette_turquoise_tint_200"
+                    app:strokeColor="@color/palette_turquoise" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
-            <RadioGroup
-                android:id="@+id/activitiesGroup"
-                android:layout_width="341dp"
-                android:layout_height="170dp"
+            <Button
+                android:id="@+id/addBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_btn"
+                app:layout_constraintStart_toStartOf="@+id/scrollView2"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+                tools:layout_editor_absoluteX="64dp"
+                tools:layout_editor_absoluteY="632dp" />
+
+            <Button
+                android:id="@+id/editBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/edit_btn"
+                app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="@+id/scrollView2"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+                tools:layout_editor_absoluteX="170dp"
+                tools:layout_editor_absoluteY="616dp" />
+
+            <Button
+                android:id="@+id/delBtn"
+                android:layout_width="98dp"
+                android:layout_height="52dp"
+                android:text="@string/delete_btn"
+                app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+                app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+                tools:layout_editor_absoluteX="279dp"
+                tools:layout_editor_absoluteY="616dp" />
+
+            <ScrollView
+                android:id="@+id/scrollView2"
+                android:layout_width="344dp"
+                android:layout_height="171dp"
+                android:layout_marginTop="104dp"
+                android:nestedScrollingEnabled="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calendarToggle">
+
+
+                <RadioGroup
+                    android:id="@+id/activitiesGroup"
+                    android:layout_width="341dp"
+                    android:layout_height="170dp"
+                    app:layout_constraintBottom_toTopOf="@+id/editBtn"
+                    app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+                    app:layout_constraintStart_toStartOf="@+id/scrollView2"
+                    app:layout_constraintTop_toTopOf="@+id/scrollView2" />
+
+            </ScrollView>
+
+            <TextView
+                android:id="@+id/emptyMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/no_activities_today_yet"
+                android:textSize="15sp"
+                android:textStyle="bold|italic"
+                android:visibility="invisible"
                 app:layout_constraintBottom_toTopOf="@+id/editBtn"
                 app:layout_constraintEnd_toEndOf="@+id/scrollView2"
                 app:layout_constraintStart_toStartOf="@+id/scrollView2"
                 app:layout_constraintTop_toTopOf="@+id/scrollView2" />
 
-        </ScrollView>
+            <TextView
+                android:id="@+id/issuePrompt1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/issue_prompt_star"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="20sp"
+                android:textStyle="bold|italic"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/issuePrompt2"
+                app:layout_constraintEnd_toStartOf="@+id/issuePrompt2" />
 
-        <TextView
-            android:id="@+id/emptyMsg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/no_activities_today_yet"
-            android:textSize="15sp"
-            android:textStyle="bold|italic"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/editBtn"
-            app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-            app:layout_constraintStart_toStartOf="@+id/scrollView2"
-            app:layout_constraintTop_toTopOf="@+id/scrollView2" />
+            <TextView
+                android:id="@+id/issuePrompt2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/issue_prompt_eco_tracker"
+                android:textSize="15sp"
+                android:textStyle="bold|italic"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/editBtn"
+                app:layout_constraintStart_toStartOf="@+id/editBtn"
+                app:layout_constraintTop_toBottomOf="@+id/editBtn" />
 
-        <TextView
-            android:id="@+id/issuePrompt1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/issue_prompt_star"
-            android:textColor="@android:color/holo_red_light"
-            android:textSize="20sp"
-            android:textStyle="bold|italic"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="@+id/issuePrompt2"
-            app:layout_constraintEnd_toStartOf="@+id/issuePrompt2" />
-
-        <TextView
-            android:id="@+id/issuePrompt2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="@string/issue_prompt_eco_tracker"
-            android:textSize="15sp"
-            android:textStyle="bold|italic"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="@+id/editBtn"
-            app:layout_constraintStart_toStartOf="@+id/editBtn"
-            app:layout_constraintTop_toBottomOf="@+id/editBtn" />
-
-        <Button
-            android:id="@+id/annualEmissionsBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/see_survey_results_btn"
-            android:textStyle="italic"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/issuePrompt2" />
+            <Button
+                android:id="@+id/annualEmissionsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/see_survey_results_btn"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/issuePrompt2" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

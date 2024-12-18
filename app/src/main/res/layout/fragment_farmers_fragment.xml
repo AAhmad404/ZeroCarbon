@@ -10,8 +10,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:orientation="vertical">
 
 
         <LinearLayout
@@ -25,10 +25,10 @@
                 android:layout_width="360dp"
                 android:layout_height="200dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="30dp"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="20dp">
+                android:layout_marginEnd="30dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="60dp">
 
 
                 <ImageView
@@ -43,10 +43,10 @@
                 android:layout_width="360dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="30dp"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="20dp">
+                android:layout_marginEnd="30dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="60dp">
 
                 <TextView
                     android:id="@+id/detailDescription"
@@ -63,15 +63,14 @@
             </androidx.cardview.widget.CardView>
 
 
-
             <androidx.cardview.widget.CardView
                 android:layout_width="360dp"
                 android:layout_height="260dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="30dp"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="20dp">
+                android:layout_marginEnd="30dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="60dp">
 
                 <TextView
                     android:id="@+id/detailsParapgraph"
@@ -88,11 +87,11 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="200dp"
                 android:layout_height="70dp"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="20dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
-                android:layout_marginTop="30dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="60dp">
 
                 <TextView
                     android:id="@+id/bt5"

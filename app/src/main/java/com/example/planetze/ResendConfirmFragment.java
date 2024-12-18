@@ -34,8 +34,7 @@ public class ResendConfirmFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_resend_confirm, container, false);
 
@@ -44,29 +43,18 @@ public class ResendConfirmFragment extends Fragment {
         login = view.findViewById(R.id.loginButton);
         auth = FirebaseAuth.getInstance();
 
-        resendConfirm.setOnClickListener(new View.OnClickListener() {
+        resendConfirm.setOnClickListener(view1 -> auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void onClick(View view) {
-                auth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            setMessage("Verification email sent!");
-                        }else{
-                            setMessage("There was an error in sending verification email, please try again.");
-                        }
-                    }
-                });
-
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    setMessage("Verification email sent!");
+                } else {
+                    setMessage("There was an error in sending verification email, please try again.");
+                }
             }
-        });
+        }));
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadFragment(new LoginView());
-            }
-        });
+        login.setOnClickListener(view2 -> loadFragment(new LoginView()));
 
         return view;
     }

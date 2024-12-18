@@ -232,9 +232,9 @@
             android:id="@+id/bycategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:text="@string/breakdown_by_category_tons"
             android:textColor="@color/white"
-            android:layout_marginBottom="5dp"
             android:textSize="15sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toTopOf="@+id/trend_graph_card"
@@ -280,9 +280,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginTop="20dp"
-            android:textSize="16sp"
             android:gravity="center"
             android:textColor="@color/white"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -413,15 +413,16 @@
             app:layout_constraintTop_toBottomOf="@+id/trend1graph_card">
 
             <LinearLayout
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/countryStat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
                     android:text="@string/comparison_by_country"
                     android:textAlignment="center"
                     android:textColor="@color/palette_black"
@@ -429,8 +430,7 @@
                     android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginBottom="30dp"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/globalTargetStat"
@@ -441,9 +441,9 @@
                     android:textColor="@color/palette_black"
                     android:textSize="15sp"
                     android:textStyle="italic"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -451,23 +451,23 @@
             android:id="@+id/homeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:backgroundTint="@color/white"
             android:text="@string/home"
-            android:layout_margin="10dp"
             android:textColor="@color/palette_black"
-            app:layout_constraintTop_toBottomOf="@id/extraInfo"
-            app:layout_constraintEnd_toEndOf="@+id/extraInfo"/>
+            app:layout_constraintEnd_toEndOf="@+id/extraInfo"
+            app:layout_constraintTop_toBottomOf="@id/extraInfo" />
 
         <Button
             android:id="@+id/retakeSurveyBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:backgroundTint="@color/white"
             android:text="@string/retake"
-            android:layout_margin="10dp"
             android:textColor="@color/palette_black"
-            app:layout_constraintTop_toBottomOf="@id/extraInfo"
-            app:layout_constraintStart_toStartOf="@+id/extraInfo"/>
+            app:layout_constraintStart_toStartOf="@+id/extraInfo"
+            app:layout_constraintTop_toBottomOf="@id/extraInfo" />
 
         <TextView
             android:id="@+id/stats"
@@ -479,15 +479,14 @@
             android:textSize="15sp"
             android:textStyle="italic"
             app:layout_constraintBottom_toTopOf="@id/extraInfo"
-            app:layout_constraintStart_toStartOf="@id/extraInfo"/>
+            app:layout_constraintStart_toStartOf="@id/extraInfo" />
 
         <View
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            app:layout_constraintTop_toBottomOf="@id/extraInfo"
-            app:layout_constraintBottom_toBottomOf="parent">
-        </View>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/extraInfo"></View>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

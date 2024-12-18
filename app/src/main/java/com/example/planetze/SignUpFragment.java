@@ -61,7 +61,7 @@ import utilities.UserData;
 
 public class SignUpFragment extends Fragment {
 
-    private EditText signupEmail, signupPassword,signupConfirmPassword, fullName;
+    private EditText signupEmail, signupPassword, signupConfirmPassword, fullName;
     private Button signupButton;
 
     private TextView inputError, signinLink;
@@ -73,40 +73,25 @@ public class SignUpFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
 
         setup(view);
 
-        signinLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadFragment(new LoginView());
-            }
-        });
+        signinLink.setOnClickListener(view1 -> loadFragment(new LoginView()));
 
-        signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signup();
-            }
-        });
+        signupButton.setOnClickListener(view2 -> signup());
 
-        googleSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        googleSignUp.setOnClickListener(view3 -> {
 
-                GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestIdToken(getString(R.string.default_web_client_id))
-                        .requestEmail()
-                        .build();
+            GoogleSignInOptions options = new GoogleSignInOptions.Builder(
+                    GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(
+                    getString(R.string.default_web_client_id)).requestEmail().build();
 
-                GoogleSignInClient client = GoogleSignIn.getClient(getActivity(), options);
+            GoogleSignInClient client = GoogleSignIn.getClient(getActivity(), options);
 
-                Intent intent = client.getSignInIntent();
-                launcher.launch(intent);
-            }
+            Intent intent = client.getSignInIntent();
+            launcher.launch(intent);
         });
 
         return view;
@@ -136,7 +121,7 @@ public class SignUpFragment extends Fragment {
             inputError.setTextSize(18);
 
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.setMargins(50,20,20,20);
+            params.setMargins(50, 20, 20, 20);
             inputError.setLayoutParams(params);
         }
     }
@@ -156,12 +141,10 @@ public class SignUpFragment extends Fragment {
         if (!cond1) {
             setMessage("Password has to be at least 7 character long");
             return false;
-        }
-        else if (!cond2) {
+        } else if (!cond2) {
             setMessage("Password has to contains numbers");
             return false;
-        }
-        else if (cond3) {
+        } else if (cond3) {
             setMessage("Password cannot contain a space");
             return false;
         }
@@ -171,8 +154,16 @@ public class SignUpFragment extends Fragment {
 
     private boolean hasNumber(String string) {
         ArrayList<Character> digits = new ArrayList<Character>();
-        digits.add('0');digits.add('1');digits.add('2');digits.add('3');digits.add('4');
-        digits.add('5');digits.add('6');digits.add('7');digits.add('8');digits.add('9');
+        digits.add('0');
+        digits.add('1');
+        digits.add('2');
+        digits.add('3');
+        digits.add('4');
+        digits.add('5');
+        digits.add('6');
+        digits.add('7');
+        digits.add('8');
+        digits.add('9');
         for (int i = 0; i < string.length(); i++) {
             if (digits.contains(string.charAt(i))) {
                 return true;
@@ -193,21 +184,19 @@ public class SignUpFragment extends Fragment {
 
     private boolean validInput(String email, String name, String password, String confirmPassword) {
         boolean cond1 = name == null || name.trim().isEmpty();
-        boolean cond2 = email == null ||email.trim().isEmpty();
+        boolean cond2 = email == null || email.trim().isEmpty();
         boolean cond3 = validPassword(password);
         boolean cond4 = confirmPassword.equals(password);
         if (cond1) {
             setMessage("Name cannot be empty");
             return false;
-        }
-        else if (cond2) {
+        } else if (cond2) {
             setMessage("Email cannot be empty");
             return false;
         }
         if (!cond3) {
             return false;
-        }
-        else if (!cond4) {
+        } else if (!cond4) {
             setMessage("Confirm Password has to match with password");
             return false;
         }
@@ -237,7 +226,7 @@ public class SignUpFragment extends Fragment {
             String oldPassword = "";
 
             DataSnapshot users = task.getResult();
-            for(DataSnapshot user:users.getChildren()) {
+            for (DataSnapshot user : users.getChildren()) {
                 String currentemail = " ";
 
                 if (user.hasChild("email")) {
@@ -253,8 +242,7 @@ public class SignUpFragment extends Fragment {
             }
             if (equalsEmail) {
                 recreateAccount(name, email, password, oldPassword);
-            }
-            else {
+            } else {
                 setMessage("Email already associated with an account");
             }
         });
@@ -262,35 +250,33 @@ public class SignUpFragment extends Fragment {
 
     private void recreateAccount(String name, String email, String password, String oldPassword) {
 
-        AUTH.signInWithEmailAndPassword(email, oldPassword)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = AUTH.getCurrentUser();
-                            String userID = user.getUid().toString().trim();
-                            UNVERIFIED_USERS_REFERENCE.child(userID).removeValue();
-                            initialize(userID, email, password, name);
-                            user.updatePassword(password);
-                            sendVerification();
-                        }
-                    }
-                });
+        AUTH.signInWithEmailAndPassword(email, oldPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    FirebaseUser user = AUTH.getCurrentUser();
+                    String userID = user.getUid().toString().trim();
+                    UNVERIFIED_USERS_REFERENCE.child(userID).removeValue();
+                    initialize(userID, email, password, name);
+                    user.updatePassword(password);
+                    sendVerification();
+                }
+            }
+        });
 
     }
 
     private void createAccountOnFirebase(String email, String password, String name) {
-        AUTH.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
+        AUTH.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
 
-                    if (task.isSuccessful()) {
-                        String id = AUTH.getCurrentUser().getUid();
-                        initialize(id, email, password, name);
-                        sendVerification();
-                    } else {
-                        checkExistingUnverifiedAccount(name, email, password);
-                    }
-                });
+            if (task.isSuccessful()) {
+                String id = AUTH.getCurrentUser().getUid();
+                initialize(id, email, password, name);
+                sendVerification();
+            } else {
+                checkExistingUnverifiedAccount(name, email, password);
+            }
+        });
     }
 
     private void sendVerification() {
@@ -305,20 +291,19 @@ public class SignUpFragment extends Fragment {
 
     private void initialize(String userID, String email, String password, String name) {
 
-        UNVERIFIED_USERS_REFERENCE.child(userID+"/email").setValue(email);
-        UNVERIFIED_USERS_REFERENCE.child(userID+"/password").setValue(password);
-        UNVERIFIED_USERS_REFERENCE.child(userID+"/name").setValue(name);
+        UNVERIFIED_USERS_REFERENCE.child(userID + "/email").setValue(email);
+        UNVERIFIED_USERS_REFERENCE.child(userID + "/password").setValue(password);
+        UNVERIFIED_USERS_REFERENCE.child(userID + "/name").setValue(name);
 
     }
 
     public void setSignUpLauncher() {
-        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        onGoogleActivityResult(result);
-                    }
-                });
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+            @Override
+            public void onActivityResult(ActivityResult result) {
+                onGoogleActivityResult(result);
+            }
+        });
     }
 
     public void onGoogleActivityResult(ActivityResult result) {
@@ -332,8 +317,7 @@ public class SignUpFragment extends Fragment {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             googleSignin();
-                        }
-                        else {
+                        } else {
 
                         }
                     }
@@ -352,12 +336,12 @@ public class SignUpFragment extends Fragment {
             UserData.initialize(getContext());
             DataSnapshot users = task.getResult();
             boolean equalsEmail = false;
-            for(DataSnapshot user:users.getChildren()) {
+            for (DataSnapshot user : users.getChildren()) {
                 String currentemail = " ";
                 if (user.hasChild("email")) {
                     currentemail = user.child("email").getValue(String.class).trim();
                 }
-                if (currentemail.equals(UserData.getData(requireContext(),EMAIL))) {
+                if (currentemail.equals(UserData.getData(requireContext(), EMAIL))) {
                     equalsEmail = true;
                 }
 
@@ -366,12 +350,11 @@ public class SignUpFragment extends Fragment {
             if (!equalsEmail) {
                 String id = UserData.getUserID(requireContext());
                 String name = AUTH.getCurrentUser().getDisplayName();
-                String email = UserData.getData(requireContext(),EMAIL);
+                String email = UserData.getData(requireContext(), EMAIL);
 
-                UserData.setDefaultSettings(id,email, name);
+                UserData.setDefaultSettings(id, email, name);
                 loadFragment(new SurveyFragment());
-            }
-            else {
+            } else {
                 isNewUser();
             }
 
@@ -383,7 +366,7 @@ public class SignUpFragment extends Fragment {
         USER_REFERENCE.get().addOnCompleteListener(task -> {
             DataSnapshot users = task.getResult();
             String userID = AUTH.getCurrentUser().getUid();
-            for(DataSnapshot user:users.getChildren()) {
+            for (DataSnapshot user : users.getChildren()) {
                 Object inu = user.child("is_new_user").getValue();
                 boolean cond1 = user.getKey().toString().trim().equals(userID);
                 boolean cond2 = inu != null && inu.toString().equals("true");
@@ -391,8 +374,7 @@ public class SignUpFragment extends Fragment {
                 if (cond1 && cond2) {
                     loadFragment(new SurveyFragment());
                     break;
-                }
-                else if (cond1) {
+                } else if (cond1) {
                     Intent intent = new Intent(getContext(), HomeActivity.class);
                     // Prevent the user from being able to navigate back the login page using the return action.
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -403,7 +385,6 @@ public class SignUpFragment extends Fragment {
             }
         });
     }
-
 
 
 }

@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/palette_turquoise"
     android:layout_height="match_parent"
+    android:background="@color/palette_turquoise"
     tools:context=".TechnologyFragment">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
             android:background="@color/palette_turquoise"
+            android:fitsSystemWindows="true"
 
             android:orientation="vertical"
             tools:context=".Details">
@@ -27,10 +27,10 @@
                 android:layout_width="360dp"
                 android:layout_height="200dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="30dp"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="20dp">
+                android:layout_marginEnd="30dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="60dp">
 
 
                 <ImageView
@@ -45,10 +45,10 @@
                 android:layout_width="360dp"
                 android:layout_height="70dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="30dp"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="20dp">
+                android:layout_marginEnd="30dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="60dp">
 
                 <TextView
                     android:id="@+id/detailDescription"
@@ -65,21 +65,20 @@
             </androidx.cardview.widget.CardView>
 
 
-
             <androidx.cardview.widget.CardView
                 android:layout_width="360dp"
                 android:layout_height="260dp"
                 android:layout_marginStart="25dp"
-                android:layout_marginEnd="30dp"
                 android:layout_marginTop="30dp"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="20dp">
+                android:layout_marginEnd="30dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="60dp">
 
                 <TextView
                     android:id="@+id/detailsParapgraph"
                     android:layout_width="300dp"
                     android:layout_height="150dp"
-                   android:layout_gravity="center"
+                    android:layout_gravity="center"
                     android:fontFamily="sans-serif"
                     android:text="GivePower Foundation is a foundation that supplies eco-friendly equipment like solar panels, to developing regions who need it the most. Using Solar technology helps stop using other technologies that rely on fossil fuels, which are responsible for 40% of the carbon dioxide emitted in the world."
                     android:textSize="16sp"
@@ -89,11 +88,11 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="200dp"
                 android:layout_height="70dp"
-                app:cardElevation="60dp"
-                app:cardCornerRadius="20dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="30dp"
                 app:cardBackgroundColor="@color/white"
-                android:layout_marginTop="30dp">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="60dp">
 
                 <TextView
                     android:id="@+id/bt3"

@@ -60,6 +60,7 @@ public class AddHabit extends Fragment {
     public AddHabit() {
         // Required empty public constructor
     }
+
     public AddHabit(boolean b) {
         returnToEcoTracker = b;
     }
@@ -78,6 +79,7 @@ public class AddHabit extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 calendar = (HashMap<String, Object>) snapshot.getValue();
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -106,14 +108,12 @@ public class AddHabit extends Fragment {
     }
 
 
-
-
-
     //HABIT RETRIEVAL LOGIC
 
     /**
      * Populates the searchable list of habits with available habits
      * Retrieves all standard habits from Firebase
+     *
      * @param view
      */
     private void initHabitLists(View view) {
@@ -130,6 +130,7 @@ public class AddHabit extends Fragment {
                 Button allHabitsBtn = globalView.findViewById(R.id.allHabitsBtn);
                 initButtons(view);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -140,6 +141,7 @@ public class AddHabit extends Fragment {
 
     /**
      * Gets the user's currently adopted habits from Firebase
+     *
      * @param userId the user who's habits we get
      * @return
      */
@@ -151,8 +153,10 @@ public class AddHabit extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 currentHabits = (List<List<String>>) snapshot.getValue();
             }
+
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
 
         return currentHabits;
@@ -162,6 +166,7 @@ public class AddHabit extends Fragment {
     /**
      * Splits entire collection of all possible habits down into the four categories
      * for filtering search
+     *
      * @param view
      */
     private void splitHabitsByCategory(View view) {
@@ -184,6 +189,7 @@ public class AddHabit extends Fragment {
 
     /**
      * Splits the entire collection of habits into impact levels for filtering search
+     *
      * @param view
      */
     private void splitHabitsByImpact(View view) {
@@ -208,6 +214,7 @@ public class AddHabit extends Fragment {
 
     /**
      * Populates the list with the appropriate habits in param [habits]
+     *
      * @param view
      * @param habits the habits to populate with
      */
@@ -240,15 +247,20 @@ public class AddHabit extends Fragment {
         String impactLevel = (String) impactSpinner.getSelectedItem();
 
         switch (category) {  //reduces habitList by category selection
-            case "Select a category": break;
+            case "Select a category":
+                break;
             case "Transportation":
-                habitList.removeIf(n -> !habitsByCategory.get(0).contains(n)); break;
+                habitList.removeIf(n -> !habitsByCategory.get(0).contains(n));
+                break;
             case "Food":
-                habitList.removeIf(n -> !habitsByCategory.get(1).contains(n)); break;
+                habitList.removeIf(n -> !habitsByCategory.get(1).contains(n));
+                break;
             case "Housing":
-                habitList.removeIf(n -> !habitsByCategory.get(2).contains(n)); break;
+                habitList.removeIf(n -> !habitsByCategory.get(2).contains(n));
+                break;
             default:  //"Consumption"
-                habitList.removeIf(n -> !habitsByCategory.get(3).contains(n)); break;
+                habitList.removeIf(n -> !habitsByCategory.get(3).contains(n));
+                break;
         }
 
         if (!impactLevel.equals("Select an impact level")) {
@@ -257,7 +269,7 @@ public class AddHabit extends Fragment {
                     final int x = i;
                     //predicate argument translates to; if habitList(index) not in
                     //habitsByImpact(particular impact level), then remove index from habitList
-                    habitList.removeIf(n -> !habitsByImpact.get(x-1).contains(n));
+                    habitList.removeIf(n -> !habitsByImpact.get(x - 1).contains(n));
                     break;
                 }
             }
@@ -270,6 +282,7 @@ public class AddHabit extends Fragment {
     /**
      * Initializes buttons and button listener for "all habits" and "your habits" buttons
      * and the "adopt"/"quit" button
+     *
      * @param view
      */
     private void initButtons(View view) {
@@ -366,7 +379,8 @@ public class AddHabit extends Fragment {
     private void computeRecommendedHabits() {
         Spinner categorySpinner = globalView.findViewById(R.id.categorySpinner);
         Spinner impactSpinner = globalView.findViewById(R.id.impactSpinner);
-        impactSpinner.setSelection(0); categorySpinner.setSelection(0);
+        impactSpinner.setSelection(0);
+        categorySpinner.setSelection(0);
         String[] orderOfHighestEmissions = getOrderOfHighestEmissions();
 
         recommendedHabits = new ArrayList<>();
@@ -385,12 +399,11 @@ public class AddHabit extends Fragment {
     }
 
 
-
-
     //SEARCH/FILTER SEARCH LOGIC
 
     /**
      * initializes spinners for filtering habits
+     *
      * @param view
      */
     private void initFilterSpinners(View view) {
@@ -399,7 +412,7 @@ public class AddHabit extends Fragment {
 
         //sets category filter spinner
         String[] arr = {"Select a category", "Transportation", "Food",
-            "Housing", "Consumption"};
+                "Housing", "Consumption"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
                 android.R.layout.simple_spinner_item, arr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -422,6 +435,7 @@ public class AddHabit extends Fragment {
 
     /**
      * related to UI; making the habit list searchable via the SearchView
+     *
      * @param view
      */
     private void attachSearchToList(View view) {
@@ -437,6 +451,7 @@ public class AddHabit extends Fragment {
                     adapter.getFilter().filter(query);
                 return false;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 //filters listView results as search string updates
@@ -470,15 +485,13 @@ public class AddHabit extends Fragment {
     }
 
 
-
-
-
     //SELECT HABIT TO ADOPT/QUIT LOGIC
 
     private boolean viewingUserHabits() {
         Button btn = globalView.findViewById(R.id.yourHabitsBtn);
         return btn.isSelected();
     }
+
     private boolean viewingRecommendedHabits() {
         Button btn = globalView.findViewById(R.id.recommendedBtn);
         return btn.isSelected();
@@ -512,6 +525,7 @@ public class AddHabit extends Fragment {
 
     /**
      * Adopt a habit function
+     *
      * @param habitToAdopt
      */
     private void adoptHabit(String habitToAdopt) {
@@ -587,8 +601,10 @@ public class AddHabit extends Fragment {
                 .child(userId).child("current_habits");
 
         currentHabitsRef.setValue(currentHabits)
-                .addOnSuccessListener(aVoid -> {})
-                .addOnFailureListener(e -> {});
+                .addOnSuccessListener(aVoid -> {
+                })
+                .addOnFailureListener(e -> {
+                });
     }
 
     private void returnToEcoTracker() {
@@ -597,16 +613,11 @@ public class AddHabit extends Fragment {
     }
 
 
-
-
-
-
     //HELPER/MISCELLANEOUS FUNCTIONS BELOW
     private static UserEmissionsData userEmissionsData;
     private static List<EmissionNodeCollection> listOfEmissionNodeCollections = new ArrayList<>();
 
     /**
-     *
      * @return a list of strings ("Transportation", "Energy", "Food", "Consumption")
      * representing activity categories sorted in terms of highest emissions over past 30 days
      * for the user
@@ -622,13 +633,17 @@ public class AddHabit extends Fragment {
                 double amount = listOfEmissionNodes.get(j).getEmissionsAmount();  //gets amount of the EmissionNode
                 switch (listOfEmissionNodes.get(j).getEmissionType()) {
                     case "Transportation":
-                        emissionsPerType[0] += amount; break;
+                        emissionsPerType[0] += amount;
+                        break;
                     case "Food":
-                        emissionsPerType[1] += amount; break;
+                        emissionsPerType[1] += amount;
+                        break;
                     case "Consumption":
-                        emissionsPerType[2] += amount; break;
+                        emissionsPerType[2] += amount;
+                        break;
                     default:  //Housing
-                        emissionsPerType[3] += amount; break;
+                        emissionsPerType[3] += amount;
+                        break;
                 }
             }
         }
@@ -651,11 +666,13 @@ public class AddHabit extends Fragment {
         userEmissionsData = new UserEmissionsData(userId, false,
                 new UserEmissionsData.DataReadyListener() {
                     @Override
-                    public void onDataReady(){
+                    public void onDataReady() {
                         listOfEmissionNodeCollections = userEmissionsData.getUserEmissionsData(30);
                     }
+
                     @Override
-                    public void onError(String s){}
+                    public void onError(String s) {
+                    }
                 });
     }
 
@@ -686,6 +703,7 @@ public class AddHabit extends Fragment {
 
     /**
      * checks if a particular item is in a ListView's current adapter
+     *
      * @param listView
      * @param selectedItem
      * @return
@@ -701,6 +719,7 @@ public class AddHabit extends Fragment {
 
     /**
      * Computes impact level (in kg of CO2) of a particular habit
+     *
      * @param habit the habit to compute the impact level for
      * @return
      */
@@ -718,6 +737,7 @@ public class AddHabit extends Fragment {
      * Removes duplicates between two lists of lists of strings.
      * Use: for removing the user's already adopted habits from the total habit list
      * (we only give them the option to add habits they haven't already added)
+     *
      * @param allHabits
      * @param currentHabits
      * @return
@@ -736,6 +756,7 @@ public class AddHabit extends Fragment {
     /**
      * Clones a list of lists of string. Need this since lists of strings are mutable, so
      * doing [List<List<String>>] = [other List<List<String>>] would cause memory issues.
+     *
      * @param list
      * @return
      */
