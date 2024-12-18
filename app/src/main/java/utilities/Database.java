@@ -26,7 +26,7 @@ public class Database {
      *
      * @param child The database path to read from.
      * @param listener The {@link OnGetDataListener} for handling different states in
-     *                the database call
+     *                 the database call
      */
     public void mReadDataOnce(String child, final OnGetDataListener listener) {
         listener.onStart();

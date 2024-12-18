@@ -1,7 +1,5 @@
 package com.example.planetze.Login;
 
-import static utilities.Constants.FIREBASE_LINK;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,8 +29,6 @@ import com.example.planetze.SurveyFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 import utilities.UserData;
 
@@ -42,7 +38,7 @@ public class LoginView extends Fragment  {
 
     private Button login;
 
-    private TextView inputError, forgotpass;
+    private TextView inputError, forgotPass;
     private Button googleSignUp;
 
     private LoginPresenter presenter;
@@ -51,7 +47,6 @@ public class LoginView extends Fragment  {
 
     ActivityResultLauncher<Intent> launcher;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -59,31 +54,18 @@ public class LoginView extends Fragment  {
 
         initialize(view);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        login.setOnClickListener(view1 -> {
 
-                String email = loginEmail.getText().toString().trim();
-                String pass = loginPass.getText().toString().trim();
+            String email = loginEmail.getText().toString().trim();
+            String pass = loginPass.getText().toString().trim();
 
-                presenter.loginUser(email, pass);
+            presenter.loginUser(email, pass);
 
-            }
         });
 
-        googleSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.startGoogleSignin();
-            }
-        });
+        googleSignUp.setOnClickListener(view2 -> presenter.startGoogleSignIn());
 
-        forgotpass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loadFragment(new ForgotPasswordFragment());
-            }
-        });
+        forgotPass.setOnClickListener(view3 -> loadFragment(new ForgotPasswordFragment()));
         return view;
     }
 
@@ -130,17 +112,12 @@ public class LoginView extends Fragment  {
 
     public void setSignUpLauncher() {
         launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(),
-                new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        presenter.onSignInResult(result);
-                    }
-                });
+                result -> presenter.onSignInResult(result));
     }
 
-    //take to home fragment and connect so bottem bar can show
+    //take to home fragment and connect so bottom bar can show
 
-    public void startGoogleSignin() {
+    public void startGoogleSignIn() {
         GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -160,7 +137,7 @@ public class LoginView extends Fragment  {
         loginPass = view.findViewById(R.id.passwordInput);
         login = view.findViewById(R.id.logInButton);
         inputError = view.findViewById(R.id.error);
-        forgotpass = view.findViewById(R.id.forgotPasswordLink);
+        forgotPass = view.findViewById(R.id.forgotPasswordLink);
 
         googleSignUp = view.findViewById(R.id.signInWithGoogleButton);
 
@@ -170,6 +147,4 @@ public class LoginView extends Fragment  {
         presenter.setSignUpLauncher();
         UserData.logout(getViewContext());
     }
-
-
 }

@@ -54,6 +54,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import utilities.UserData;
 
@@ -230,34 +231,31 @@ public class SignUpFragment extends Fragment {
 
     private void checkExistingUnverifiedAccount(String name, String email, String password) {
 
-        UNVERIFIED_USERS_REFERENCE.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
+        UNVERIFIED_USERS_REFERENCE.get().addOnCompleteListener(task -> {
 
-                boolean equalsEmail = false;
-                String oldPassword = "";
+            boolean equalsEmail = false;
+            String oldPassword = "";
 
-                DataSnapshot users = task.getResult();
-                for(DataSnapshot user:users.getChildren()) {
-                    String currentemail = " ";
+            DataSnapshot users = task.getResult();
+            for(DataSnapshot user:users.getChildren()) {
+                String currentemail = " ";
 
-                    if (user.hasChild("email")) {
-                        currentemail = user.child("email").getValue(String.class).toString().trim();
-                    }
-
-                    if (currentemail.equals(email)) {
-                        equalsEmail = true;
-                        oldPassword = user.child("password").getValue(String.class).toString().trim();
-                        break;
-                    }
-
+                if (user.hasChild("email")) {
+                    currentemail = user.child("email").getValue(String.class).toString().trim();
                 }
-                if (equalsEmail) {
-                    recreateAccount(name, email, password, oldPassword);
+
+                if (currentemail.equals(email)) {
+                    equalsEmail = true;
+                    oldPassword = user.child("password").getValue(String.class).toString().trim();
+                    break;
                 }
-                else {
-                    setMessage("Email already accociated with an account");
-                }
+
+            }
+            if (equalsEmail) {
+                recreateAccount(name, email, password, oldPassword);
+            }
+            else {
+                setMessage("Email already associated with an account");
             }
         });
     }
@@ -283,31 +281,25 @@ public class SignUpFragment extends Fragment {
 
     private void createAccountOnFirebase(String email, String password, String name) {
         AUTH.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                .addOnCompleteListener(task -> {
 
-                        if (task.isSuccessful()) {
-                            String id = AUTH.getCurrentUser().getUid();
-                            initialize(id, email, password, name);
-                            sendVerification();
-                        } else {
-                            checkExistingUnverifiedAccount(name, email, password);
-                        }
+                    if (task.isSuccessful()) {
+                        String id = AUTH.getCurrentUser().getUid();
+                        initialize(id, email, password, name);
+                        sendVerification();
+                    } else {
+                        checkExistingUnverifiedAccount(name, email, password);
                     }
                 });
     }
 
     private void sendVerification() {
         Activity activity = getActivity();
-        AUTH.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (!task.isSuccessful()) {
-                    Toast.makeText(activity, "there was an error in sending verification email", Toast.LENGTH_LONG).show();
-                }
-                loadFragment(new ResendConfirmFragment());
+        AUTH.getCurrentUser().sendEmailVerification().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                Toast.makeText(activity, "there was an error in sending verification email", Toast.LENGTH_LONG).show();
             }
+            loadFragment(new ResendConfirmFragment());
         });
     }
 
@@ -355,37 +347,34 @@ public class SignUpFragment extends Fragment {
     }
 
     private void googleSignin() {
-        USER_REFERENCE.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                UserData.login(requireContext(),AUTH.getCurrentUser().getUid());
-                UserData.initialize(getContext());
-                DataSnapshot users = task.getResult();
-                boolean equalsEmail = false;
-                for(DataSnapshot user:users.getChildren()) {
-                    String currentemail = " ";
-                    if (user.hasChild("email")) {
-                        currentemail = user.child("email").getValue(String.class).toString().trim();
-                    }
-                    if (currentemail.equals(UserData.getData(getContext(),EMAIL))) {
-                        equalsEmail = true;
-                    }
-
+        USER_REFERENCE.get().addOnCompleteListener(task -> {
+            UserData.login(requireContext(), Objects.requireNonNull(AUTH.getCurrentUser()).getUid());
+            UserData.initialize(getContext());
+            DataSnapshot users = task.getResult();
+            boolean equalsEmail = false;
+            for(DataSnapshot user:users.getChildren()) {
+                String currentemail = " ";
+                if (user.hasChild("email")) {
+                    currentemail = user.child("email").getValue(String.class).trim();
                 }
-
-                if (!equalsEmail) {
-                    String id = UserData.getUserID(getContext());
-                    String name = AUTH.getCurrentUser().getDisplayName();
-                    String email = UserData.getData(getContext(),EMAIL);
-
-                    UserData.setDefaultSettings(id,email, name);
-                    loadFragment(new SurveyFragment());
-                }
-                else {
-                    isNewUser();
+                if (currentemail.equals(UserData.getData(requireContext(),EMAIL))) {
+                    equalsEmail = true;
                 }
 
             }
+
+            if (!equalsEmail) {
+                String id = UserData.getUserID(requireContext());
+                String name = AUTH.getCurrentUser().getDisplayName();
+                String email = UserData.getData(requireContext(),EMAIL);
+
+                UserData.setDefaultSettings(id,email, name);
+                loadFragment(new SurveyFragment());
+            }
+            else {
+                isNewUser();
+            }
+
         });
     }
 
