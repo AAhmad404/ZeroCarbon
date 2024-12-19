@@ -177,4 +177,5 @@
     <string name="issue_prompt_eco_tracker">Please select an activity to edit/delete</string>
     <string name="current_year">2024</string>
     <string name="habits_btn">Habits</string>
+    <string name="ecoagent">Eco Agent</string>
 </resources>

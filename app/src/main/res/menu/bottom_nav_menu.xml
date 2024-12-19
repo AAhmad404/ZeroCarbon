@@ -9,12 +9,16 @@
         android:id="@+id/EcoGaugeFragment"
         android:icon="@drawable/eco_gauge_nav_ic"
         android:title="@string/ecogauge" />
-    <item
-        android:id="@+id/EcoBalanceFragment"
-        android:icon="@drawable/eco_balance_nav_ic"
-        android:title="@string/ecobalance" />
+<!--    <item-->
+<!--        android:id="@+id/EcoBalanceFragment"-->
+<!--        android:icon="@drawable/eco_balance_nav_ic"-->
+<!--        android:title="@string/ecobalance" />-->
     <item
         android:id="@+id/EcoHubEntryFragment"
         android:icon="@drawable/eco_hub_nav_ic"
         android:title="@string/ecohub" />
+    <item
+        android:id="@+id/EcoAgentFragment"
+        android:icon="@drawable/eco_agent_nav_ic"
+        android:title="@string/ecoagent" />
 </menu>

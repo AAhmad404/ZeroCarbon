@@ -16,13 +16,9 @@
         <item name="colorSecondaryContainer">@color/palette_turquoise_tint_200</item>
     </style>
 
-    <style name="Theme.Planetze" parent="Base.Theme.Planetze" />
-
     <style name="roundImageViewRounded">
 
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
-
-
     </style>
 </resources>
