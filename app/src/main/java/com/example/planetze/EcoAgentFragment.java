@@ -13,6 +13,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.planetze.chat.ChatAdapter;
+import com.example.planetze.chat.ChatMessage;
+import com.example.planetze.chat.Gemini;
+import com.google.ai.client.generativeai.GenerativeModel;
+import com.google.ai.client.generativeai.type.BlockThreshold;
+import com.google.ai.client.generativeai.type.GenerationConfig;
+import com.google.ai.client.generativeai.type.HarmCategory;
+import com.google.ai.client.generativeai.type.SafetySetting;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
@@ -25,6 +33,8 @@ public class EcoAgentFragment extends Fragment {
     private MaterialButton sendButton;
     private ChatAdapter chatAdapter;
     private List<ChatMessage> chatMessages;
+
+    private Gemini gemini;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -47,6 +57,8 @@ public class EcoAgentFragment extends Fragment {
         // Set up Send Button click listener
         sendButton.setOnClickListener(v -> sendMessage());
 
+        gemini = new Gemini();
+
         return view;
     }
 
@@ -66,17 +78,33 @@ public class EcoAgentFragment extends Fragment {
         // Clear the input box
         chatInputEditText.setText("");
 
-        // Simulate bot response (replace this with real chatbot logic)
+        // Send the message to Gemini for a real response
         simulateBotResponse(message);
     }
 
     private void simulateBotResponse(String userMessage) {
-        // Simple bot response logic
-        String botResponse = "You said: " + userMessage;
-        chatMessages.add(new ChatMessage(botResponse, false));
-        chatAdapter.notifyItemInserted(chatMessages.size() - 1);
+        gemini.askGemini(userMessage, new Gemini.Callback() {
+            @Override
+            public void onSuccess(String response) {
+                // Ensure the UI updates happen on the main thread
+                getActivity().runOnUiThread(() -> {
+                    // This method is called when a response is successfully received from Gemini
+                    chatMessages.add(new ChatMessage(response, false));
+                    chatAdapter.notifyItemInserted(chatMessages.size() - 1);
 
-        // Scroll to the latest message
-        chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
+                    // Scroll to the latest message
+                    chatRecyclerView.smoothScrollToPosition(chatMessages.size() - 1);
+                });
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+                // Ensure the UI update (Toast) happens on the main thread
+                getActivity().runOnUiThread(() -> {
+                    // Handle any errors that occur during the request
+                    Toast.makeText(getContext(), "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+            }
+        });
     }
 }

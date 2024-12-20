@@ -1,22 +1,22 @@
 package com.example.planetze;
 
-import static utilities.Colors.PALETTE_TURQUOISE;
-import static utilities.Colors.PALETTE_TURQUOISE_TINT_100;
-import static utilities.Colors.PALETTE_TURQUOISE_TINT_200;
-import static utilities.Colors.PALETTE_TURQUOISE_TINT_400;
-import static utilities.Colors.PALETTE_TURQUOISE_TINT_500;
-import static utilities.Colors.PALETTE_TURQUOISE_TINT_600;
-import static utilities.Colors.PALETTE_TURQUOISE_TINT_800;
-import static utilities.Constants.DAILY;
-import static utilities.Constants.DEFAULT_COUNTRY;
-import static utilities.Constants.HIDE_GRID_LINES;
-import static utilities.Constants.HIDE_TREND_LINE_POINTS;
-import static utilities.Constants.INTERPOLATE_EMISSIONS_DATA;
-import static utilities.Constants.MONTHLY;
-import static utilities.Constants.OVERALL;
-import static utilities.Constants.WEEKLY;
-import static utilities.Constants.YEARLY;
-import static utilities.Constants.country;
+import static utils.Colors.PALETTE_TURQUOISE;
+import static utils.Colors.PALETTE_TURQUOISE_TINT_100;
+import static utils.Colors.PALETTE_TURQUOISE_TINT_200;
+import static utils.Colors.PALETTE_TURQUOISE_TINT_400;
+import static utils.Colors.PALETTE_TURQUOISE_TINT_500;
+import static utils.Colors.PALETTE_TURQUOISE_TINT_600;
+import static utils.Colors.PALETTE_TURQUOISE_TINT_800;
+import static utils.Constants.DAILY;
+import static utils.Constants.DEFAULT_COUNTRY;
+import static utils.Constants.HIDE_GRID_LINES;
+import static utils.Constants.HIDE_TREND_LINE_POINTS;
+import static utils.Constants.INTERPOLATE_EMISSIONS_DATA;
+import static utils.Constants.MONTHLY;
+import static utils.Constants.OVERALL;
+import static utils.Constants.WEEKLY;
+import static utils.Constants.YEARLY;
+import static utils.Constants.country;
 
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -58,20 +58,18 @@ import com.github.mikephil.charting.listener.ChartTouchListener;
 import com.github.mikephil.charting.listener.OnChartGestureListener;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.google.android.material.button.MaterialButtonToggleGroup;
-import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
-import utilities.CountryEmissionsData;
+import utils.CountryEmissionsData;
 import customDataStructures.EmissionNode;
 import customDataStructures.EmissionNodeCollection;
-import utilities.UserData;
-import utilities.UserEmissionsData;
+import utils.UserData;
+import utils.UserEmissionsData;
 
 
 /**

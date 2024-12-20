@@ -1,4 +1,4 @@
-package com.example.planetze;
+package com.example.planetze.chat;
 
 public class ChatMessage {
     private final String message;

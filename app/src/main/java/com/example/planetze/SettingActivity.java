@@ -1,13 +1,13 @@
 package com.example.planetze;
 
-import static utilities.Constants.EMAIL;
-import static utilities.Constants.FIREBASE_LINK;
-import static utilities.Constants.HIDE_GRID_LINES;
-import static utilities.Constants.INTERPOLATE_EMISSIONS_DATA;
-import static utilities.Constants.HIDE_TREND_LINE_POINTS;
-import static utilities.Constants.STAY_LOGGED_ON;
-import static utilities.Constants.USER_DATA;
-import static utilities.Constants.USERNAME;
+import static utils.Constants.EMAIL;
+import static utils.Constants.FIREBASE_URL;
+import static utils.Constants.HIDE_GRID_LINES;
+import static utils.Constants.INTERPOLATE_EMISSIONS_DATA;
+import static utils.Constants.HIDE_TREND_LINE_POINTS;
+import static utils.Constants.STAY_LOGGED_ON;
+import static utils.Constants.USER_DATA;
+import static utils.Constants.USERNAME;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +29,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import utilities.UserData;
+import utils.UserData;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -166,7 +166,7 @@ public class SettingActivity extends AppCompatActivity {
         name.setText(UserData.getData(getApplicationContext(), USERNAME));
         email.setText(UserData.getData(getApplicationContext(), EMAIL));
 
-        db = FirebaseDatabase.getInstance(FIREBASE_LINK);
+        db = FirebaseDatabase.getInstance(FIREBASE_URL);
         userRef = db.getReference(USER_DATA);
     }
 

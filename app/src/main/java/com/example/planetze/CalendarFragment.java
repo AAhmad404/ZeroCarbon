@@ -1,6 +1,6 @@
 package com.example.planetze;
 
-import static utilities.Constants.USER_DATA;
+import static utils.Constants.USER_DATA;
 
 import android.graphics.Color;
 import android.os.Bundle;

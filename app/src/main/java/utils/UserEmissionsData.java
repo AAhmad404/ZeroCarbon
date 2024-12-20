@@ -1,7 +1,7 @@
-package utilities;
+package utils;
 
-import static utilities.Constants.EMISSIONS_AMOUNT_INDEX;
-import static utilities.Constants.EMISSION_TYPE_INDEX;
+import static utils.Constants.EMISSIONS_AMOUNT_INDEX;
+import static utils.Constants.EMISSION_TYPE_INDEX;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

@@ -1,10 +1,9 @@
 package com.example.planetze;
 
-import static utilities.Constants.USER_DATA;
+import static utils.Constants.USER_DATA;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import utilities.Constants;
-import utilities.UserData;
+import utils.Constants;
+import utils.UserData;
 
 public class SurveyFragment extends Fragment {
 

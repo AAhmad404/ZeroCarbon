@@ -1,11 +1,10 @@
 package com.example.planetze;
 
-import static utilities.Constants.USER_DATA;
+import static utils.Constants.USER_DATA;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,12 +31,10 @@ import com.google.firebase.database.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import utilities.Constants;
-import utilities.UserData;
+import utils.Constants;
+import utils.UserData;
 
 /**
  * A {@link Fragment} subclass.

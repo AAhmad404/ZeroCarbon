@@ -2,14 +2,14 @@ package com.example.planetze.Login;
 
 import static android.app.Activity.RESULT_OK;
 
-import static utilities.Constants.AUTH;
-import static utilities.Constants.EMAIL;
-import static utilities.Constants.HIDE_GRID_LINES;
-import static utilities.Constants.INTERPOLATE_EMISSIONS_DATA;
-import static utilities.Constants.HIDE_TREND_LINE_POINTS;
-import static utilities.Constants.STAY_LOGGED_ON;
-import static utilities.Constants.UNVERIFIED_USERS_REFERENCE;
-import static utilities.Constants.USER_REFERENCE;
+import static utils.Constants.AUTH;
+import static utils.Constants.EMAIL;
+import static utils.Constants.HIDE_GRID_LINES;
+import static utils.Constants.INTERPOLATE_EMISSIONS_DATA;
+import static utils.Constants.HIDE_TREND_LINE_POINTS;
+import static utils.Constants.STAY_LOGGED_ON;
+import static utils.Constants.UNVERIFIED_USERS_REFERENCE;
+import static utils.Constants.USER_REFERENCE;
 
 import androidx.activity.result.ActivityResult;
 import androidx.annotation.NonNull;
@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 
-import utilities.UserData;
+import utils.UserData;
 
 public class LoginModel {
 

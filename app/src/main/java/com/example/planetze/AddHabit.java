@@ -1,11 +1,10 @@
 package com.example.planetze;
 
-import static utilities.Constants.USER_DATA;
+import static utils.Constants.USER_DATA;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -33,9 +32,9 @@ import java.util.List;
 
 import customDataStructures.EmissionNode;
 import customDataStructures.EmissionNodeCollection;
-import utilities.Constants;
-import utilities.UserData;
-import utilities.UserEmissionsData;
+import utils.Constants;
+import utils.UserData;
+import utils.UserEmissionsData;
 
 /**
  * A simple {@link Fragment} subclass.

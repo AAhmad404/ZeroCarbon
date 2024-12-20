@@ -1,22 +1,18 @@
-package utilities;
+package utils;
 
-import static android.provider.Telephony.Carriers.PASSWORD;
-import static android.provider.Telephony.Carriers.USER;
 import static java.lang.Thread.sleep;
 
-import static utilities.Constants.AUTH;
-import static utilities.Constants.DEFAULT_CAR;
-import static utilities.Constants.DEFAULT_COUNTRY;
-import static utilities.Constants.EMAIL;
-import static utilities.Constants.FIREBASE_LINK;
-import static utilities.Constants.HIDE_GRID_LINES;
-import static utilities.Constants.INTERPOLATE_EMISSIONS_DATA;
-import static utilities.Constants.HIDE_TREND_LINE_POINTS;
-import static utilities.Constants.STAY_LOGGED_ON;
-import static utilities.Constants.UNVERIFIED_USERS_REFERENCE;
-import static utilities.Constants.USER_DATA;
-import static utilities.Constants.USERNAME;
-import static utilities.Constants.USER_REFERENCE;
+import static utils.Constants.AUTH;
+import static utils.Constants.DEFAULT_CAR;
+import static utils.Constants.DEFAULT_COUNTRY;
+import static utils.Constants.EMAIL;
+import static utils.Constants.HIDE_GRID_LINES;
+import static utils.Constants.INTERPOLATE_EMISSIONS_DATA;
+import static utils.Constants.HIDE_TREND_LINE_POINTS;
+import static utils.Constants.STAY_LOGGED_ON;
+import static utils.Constants.UNVERIFIED_USERS_REFERENCE;
+import static utils.Constants.USERNAME;
+import static utils.Constants.USER_REFERENCE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -25,13 +21,8 @@ import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.EmailAuthProvider;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class UserData {
 
