@@ -2,35 +2,23 @@ package com.example.planetze;
 
 import android.content.Intent;
 
-import static androidx.navigation.fragment.FragmentKt.findNavController;
-import static java.security.AccessController.getContext;
-
-import static utilities.Constants.FIREBASE_LINK;
-import static utilities.Constants.STAY_LOGGED_ON;
-import static utilities.Constants.USER_DATA;
+import static utils.Constants.FIREBASE_URL;
+import static utils.Constants.STAY_LOGGED_ON;
+import static utils.Constants.USER_DATA;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.example.planetze.Login.LoginView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import utilities.UserData;
+import utils.UserData;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        db = FirebaseDatabase.getInstance(FIREBASE_LINK);
+        db = FirebaseDatabase.getInstance(FIREBASE_URL);
         userRef = db.getReference(USER_DATA);
         auth = FirebaseAuth.getInstance();
 

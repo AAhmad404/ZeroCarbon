@@ -1,10 +1,4 @@
-package utilities;
-
-import static utilities.Constants.DAILY;
-import static utilities.Constants.MONTHLY;
-import static utilities.Constants.OVERALL;
-import static utilities.Constants.WEEKLY;
-import static utilities.Constants.YEARLY;
+package utils;
 
 import android.content.Context;
 

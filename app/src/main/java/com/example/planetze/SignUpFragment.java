@@ -3,16 +3,10 @@ package com.example.planetze;
 
 import static android.app.Activity.RESULT_OK;
 import static java.lang.Character.isLetter;
-import static utilities.Constants.AUTH;
-import static utilities.Constants.EMAIL;
-import static utilities.Constants.FIREBASE_LINK;
-import static utilities.Constants.HIDE_GRID_LINES;
-import static utilities.Constants.INTERPOLATE_EMISSIONS_DATA;
-import static utilities.Constants.HIDE_TREND_LINE_POINTS;
-import static utilities.Constants.STAY_LOGGED_ON;
-import static utilities.Constants.UNVERIFIED_USERS_REFERENCE;
-import static utilities.Constants.USER_DATA;
-import static utilities.Constants.USER_REFERENCE;
+import static utils.Constants.AUTH;
+import static utils.Constants.EMAIL;
+import static utils.Constants.UNVERIFIED_USERS_REFERENCE;
+import static utils.Constants.USER_REFERENCE;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -46,17 +40,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-import utilities.UserData;
+import utils.UserData;
 
 
 public class SignUpFragment extends Fragment {

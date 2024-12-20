@@ -46,6 +46,7 @@
     <string name="close">Close</string>
 
     <!-- Strings used for home -->
+    <string name="eco_agent">Eco Agent</string>
     <string name="eco_gauge">Eco Gauge</string>
     <string name="eco_balance">Eco Balance</string>
     <string name="eco_hub">Eco Hub</string>
@@ -177,4 +178,8 @@
     <string name="issue_prompt_eco_tracker">Please select an activity to edit/delete</string>
     <string name="current_year">2024</string>
     <string name="habits_btn">Habits</string>
+
+    <!-- EcoAgent page -->
+    <string name="ask_me_something">Ask me something</string>
+    <string name="send">Send</string>
 </resources>

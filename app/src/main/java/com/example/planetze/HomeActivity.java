@@ -2,10 +2,8 @@ package com.example.planetze;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -19,12 +17,11 @@ import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.planetze.Login.LoginView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
 
-import utilities.UserData;
+import utils.UserData;
 
 public class HomeActivity extends AppCompatActivity {
 

@@ -52,4 +52,10 @@
             android:id="@+id/action_LoginView_to_EcoTrackerFragment"
             app:destination="@id/EcoTrackerFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/EcoAgentFragment"
+        android:name="com.example.planetze.EcoAgentFragment"
+        android:label="Eco Agent"
+        tools:layout="@layout/fragment_eco_agent"
+    />
 </navigation>
