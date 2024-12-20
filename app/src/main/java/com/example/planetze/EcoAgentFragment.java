@@ -15,16 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.planetze.chat.ChatAdapter;
 import com.example.planetze.chat.ChatMessage;
-import com.example.planetze.chat.Gemini;
-import com.google.ai.client.generativeai.GenerativeModel;
-import com.google.ai.client.generativeai.type.BlockThreshold;
-import com.google.ai.client.generativeai.type.GenerationConfig;
-import com.google.ai.client.generativeai.type.HarmCategory;
-import com.google.ai.client.generativeai.type.SafetySetting;
+import com.example.planetze.chat.EcoAgent;
 import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class EcoAgentFragment extends Fragment {
 
@@ -34,7 +30,7 @@ public class EcoAgentFragment extends Fragment {
     private ChatAdapter chatAdapter;
     private List<ChatMessage> chatMessages;
 
-    private Gemini gemini;
+    private EcoAgent ecoAgent;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
@@ -57,7 +53,7 @@ public class EcoAgentFragment extends Fragment {
         // Set up Send Button click listener
         sendButton.setOnClickListener(v -> sendMessage());
 
-        gemini = new Gemini();
+        ecoAgent = new EcoAgent();
 
         return view;
     }
@@ -78,16 +74,16 @@ public class EcoAgentFragment extends Fragment {
         // Clear the input box
         chatInputEditText.setText("");
 
-        // Send the message to Gemini for a real response
+        // Send the message to bot for a real response
         simulateBotResponse(message);
     }
 
     private void simulateBotResponse(String userMessage) {
-        gemini.askGemini(userMessage, new Gemini.Callback() {
+        ecoAgent.askAgent(userMessage, new EcoAgent.Callback() {
             @Override
             public void onSuccess(String response) {
                 // Ensure the UI updates happen on the main thread
-                getActivity().runOnUiThread(() -> {
+                requireActivity().runOnUiThread(() -> {
                     // This method is called when a response is successfully received from Gemini
                     chatMessages.add(new ChatMessage(response, false));
                     chatAdapter.notifyItemInserted(chatMessages.size() - 1);
@@ -100,7 +96,7 @@ public class EcoAgentFragment extends Fragment {
             @Override
             public void onError(Throwable throwable) {
                 // Ensure the UI update (Toast) happens on the main thread
-                getActivity().runOnUiThread(() -> {
+                requireActivity().runOnUiThread(() -> {
                     // Handle any errors that occur during the request
                     Toast.makeText(getContext(), "Error: " + throwable.getMessage(), Toast.LENGTH_SHORT).show();
                 });

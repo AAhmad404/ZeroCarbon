@@ -20,5 +20,5 @@
     <item
         android:id="@+id/EcoAgentFragment"
         android:icon="@drawable/eco_agent_nav_ic"
-        android:title="@string/ecoagent" />
+        android:title="@string/eco_agent" />
 </menu>
