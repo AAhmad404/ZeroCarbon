@@ -1,5 +1,6 @@
 package com.example.planetze;
 
+import static com.example.planetze.utils.Constants.FIREBASE_URL;
 import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.content.Intent;
@@ -71,7 +72,7 @@ public class SurveyResultsFragment extends Fragment {
         if (returnToEcoTracker) initHomeBtn(view, 1);
         else initHomeBtn(view, 0);
 
-        db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance(FIREBASE_URL);
         userId = UserData.getUserID(getContext());
         DatabaseReference userArrayRef = db.getReference(USER_DATA)
                 .child(userId).child("survey_results");

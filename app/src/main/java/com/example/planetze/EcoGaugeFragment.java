@@ -141,10 +141,10 @@ public class EcoGaugeFragment extends Fragment
 
                     @Override
                     public void onDataReady() {
-                        if (userEmissionsData.userHasData()) {
-                            // Hide loading indicator when data is ready
-                            loadingIndicator.setVisibility(View.GONE);
+                        // Hide loading indicator when data is ready
+                        loadingIndicator.setVisibility(View.GONE);
 
+                        if (userEmissionsData.userHasData()) {
                             // Un hide the charts and show the data.
                             unHideUI();
                             updateUI();

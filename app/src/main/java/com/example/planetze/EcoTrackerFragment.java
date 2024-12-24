@@ -1,5 +1,6 @@
 package com.example.planetze;
 
+import static com.example.planetze.utils.Constants.FIREBASE_URL;
 import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.os.Bundle;
@@ -111,7 +112,7 @@ public class EcoTrackerFragment extends Fragment {
 
         userId = UserData.getUserID(getContext());
 
-        db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance(FIREBASE_URL);
         calendarRef = db.getReference(USER_DATA)
                 .child(userId).child("calendar");
         habitsRef = db.getReference().child(USER_DATA)

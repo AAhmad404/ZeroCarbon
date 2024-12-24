@@ -1,5 +1,6 @@
 package com.example.planetze;
 
+import static com.example.planetze.utils.Constants.FIREBASE_URL;
 import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.graphics.Color;
@@ -36,7 +37,7 @@ import java.util.Set;
  */
 public class CalendarFragment extends DialogFragment {
     static View globalView;
-    static FirebaseDatabase db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");
+    static FirebaseDatabase db = FirebaseDatabase.getInstance(FIREBASE_URL);
 
     String userId = EcoTrackerFragment.userId;  //this is legal because CalendarFragment is only ever called through ecotracker
 

@@ -1,5 +1,6 @@
 package com.example.planetze;
 
+import static com.example.planetze.utils.Constants.FIREBASE_URL;
 import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.os.Bundle;
@@ -99,7 +100,7 @@ public class ForgotPasswordFragment extends Fragment {
 
         emailArray = new ArrayList<String>();
 
-        db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance(FIREBASE_URL);
         userRef = db.getReference(USER_DATA);
 
 

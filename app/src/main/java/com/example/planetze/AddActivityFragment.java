@@ -53,7 +53,7 @@ public class AddActivityFragment extends Fragment {
     private boolean spinnerListeners = false;
     private int id = 0;
     private String default_car = "none";
-    static FirebaseDatabase db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");
+    static FirebaseDatabase db = FirebaseDatabase.getInstance("https://carbon-emissions-tracker-d7f9e-default-rtdb.firebaseio.com");
     static String userId;  //this should be changed to the particular logged in user once everything works
     int recursionLimiter = 0;
 

@@ -45,7 +45,7 @@ public class AddHabitFragment extends Fragment {
     private View globalView;
     private final String[] categories = Constants.categories;
     private final String[] impacts = Constants.impacts;
-    FirebaseDatabase db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");
+    FirebaseDatabase db = FirebaseDatabase.getInstance("https://carbon-emissions-tracker-d7f9e-default-rtdb.firebaseio.com");
     private static String userId;
     private HashMap<String, Object> calendar;
     List<List<String>> allHabits;

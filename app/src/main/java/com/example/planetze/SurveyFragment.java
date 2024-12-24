@@ -1,5 +1,6 @@
 package com.example.planetze;
 
+import static com.example.planetze.utils.Constants.FIREBASE_URL;
 import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.graphics.Color;
@@ -66,7 +67,7 @@ public class SurveyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_init_survey, container, false);
 
-        db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance(FIREBASE_URL);
         userId = UserData.getUserID(getContext());
 
         initSurvey(view);
@@ -168,7 +169,7 @@ public class SurveyFragment extends Fragment {
     protected double transportEmissions() {
         //firebase stuff used to store what car uses drives by default (needed for "Drive personal
         //vehicle" activity in EcoTracker)
-        db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance("https://carbon-emissions-tracker-d7f9e-default-rtdb.firebaseio.com");
         DatabaseReference userRef = db.getReference(USER_DATA)
                 .child(userId);
         Map<String, Object> c = new HashMap<>();
@@ -537,7 +538,11 @@ public class SurveyFragment extends Fragment {
                     c.put("survey_results", list);
                     userRef.updateChildren(c);
 
+                    System.out.println(userRef.child("is_new_user"));
+
                     userRef.child("is_new_user").setValue(false);
+
+                    System.out.println(userRef.child("is_new_user"));
 
                     //"false" makes it so that pressing home button on survey results goes to app homepage
                     loadFragment(new SurveyResultsFragment(false));
@@ -586,7 +591,7 @@ public class SurveyFragment extends Fragment {
      * @param btnId
      */
     private void saveDefaultCountry(int btnId) {
-        db = FirebaseDatabase.getInstance("https://planetze-c3c95-default-rtdb.firebaseio.com/");
+        db = FirebaseDatabase.getInstance("https://carbon-emissions-tracker-d7f9e-default-rtdb.firebaseio.com");
         DatabaseReference userRef = db.getReference(USER_DATA)
                 .child(userId);
         Map<String, Object> c = new HashMap<>();
