@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
-    tools:context=".AddHabit">
+    tools:context=".AddHabitFragment">
 
     <!-- Constraint layout as main parent -->
     <androidx.constraintlayout.widget.ConstraintLayout

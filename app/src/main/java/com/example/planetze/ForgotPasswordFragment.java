@@ -1,6 +1,6 @@
 package com.example.planetze;
 
-import static utils.Constants.USER_DATA;
+import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.os.Bundle;
 
@@ -16,7 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.planetze.Login.LoginView;
+import com.example.planetze.login.LoginView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

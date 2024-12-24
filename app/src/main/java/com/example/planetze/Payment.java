@@ -1,6 +1,5 @@
 package com.example.planetze;
 
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 
@@ -14,28 +13,19 @@ import com.android.volley.toolbox.Volley;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.OptIn;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.media3.common.util.Log;
 
-import com.example.planetze.databinding.ActivityEcoBalanceDestinationBinding;
-import com.example.planetze.databinding.ActivityEcoBalanceDestinationBinding;
-
-
-import androidx.media3.common.util.UnstableApi;
 import androidx.navigation.ui.AppBarConfiguration;
 
 import com.example.planetze.databinding.ActivityPaymentBinding;
 import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.paymentsheet.PaymentSheet;
-import com.stripe.android.paymentsheet.PaymentSheetConfigurationKtxKt;
 import com.stripe.android.paymentsheet.PaymentSheetResult;
-import com.stripe.android.paymentsheet.PaymentSheetResultCallback;
 
 import org.json.JSONException;
 import org.json.JSONObject;

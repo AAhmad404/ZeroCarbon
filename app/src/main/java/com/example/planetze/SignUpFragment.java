@@ -3,10 +3,10 @@ package com.example.planetze;
 
 import static android.app.Activity.RESULT_OK;
 import static java.lang.Character.isLetter;
-import static utils.Constants.AUTH;
-import static utils.Constants.EMAIL;
-import static utils.Constants.UNVERIFIED_USERS_REFERENCE;
-import static utils.Constants.USER_REFERENCE;
+import static com.example.planetze.utils.Constants.AUTH;
+import static com.example.planetze.utils.Constants.EMAIL;
+import static com.example.planetze.utils.Constants.UNVERIFIED_USERS_REFERENCE;
+import static com.example.planetze.utils.Constants.USER_REFERENCE;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -30,7 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.planetze.Login.LoginView;
+import com.example.planetze.login.LoginView;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -47,7 +47,7 @@ import com.google.firebase.database.DataSnapshot;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import utils.UserData;
+import com.example.planetze.utils.UserData;
 
 
 public class SignUpFragment extends Fragment {

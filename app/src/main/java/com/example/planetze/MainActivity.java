@@ -2,9 +2,9 @@ package com.example.planetze;
 
 import android.content.Intent;
 
-import static utils.Constants.FIREBASE_URL;
-import static utils.Constants.STAY_LOGGED_ON;
-import static utils.Constants.USER_DATA;
+import static com.example.planetze.utils.Constants.FIREBASE_URL;
+import static com.example.planetze.utils.Constants.STAY_LOGGED_ON;
+import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.os.Bundle;
 
@@ -12,13 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.planetze.Login.LoginView;
+import com.example.planetze.login.LoginView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import utils.UserData;
+import com.example.planetze.utils.UserData;
 
 public class MainActivity extends AppCompatActivity {
 

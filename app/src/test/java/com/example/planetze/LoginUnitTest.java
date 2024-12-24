@@ -13,9 +13,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import android.content.Context;
 
-import com.example.planetze.Login.LoginModel;
-import com.example.planetze.Login.LoginPresenter;
-import com.example.planetze.Login.LoginView;
+import com.example.planetze.login.LoginModel;
+import com.example.planetze.login.LoginPresenter;
+import com.example.planetze.login.LoginView;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

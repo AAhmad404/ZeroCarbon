@@ -1,6 +1,6 @@
 package com.example.planetze;
 
-import static utils.Constants.USER_DATA;
+import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,11 +32,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-import utils.Constants;
-import utils.UserData;
+import com.example.planetze.utils.Constants;
+import com.example.planetze.utils.UserData;
 
 
-public class SurveyResults extends Fragment {
+public class SurveyResultsFragment extends Fragment {
 
     private FirebaseDatabase db;
     private String userId;
@@ -51,11 +51,11 @@ public class SurveyResults extends Fragment {
     List<Double> results = new ArrayList<>();
     private boolean returnToEcoTracker = false;
 
-    public SurveyResults(boolean b) {
+    public SurveyResultsFragment(boolean b) {
         returnToEcoTracker = b;
     }
 
-    public SurveyResults() {
+    public SurveyResultsFragment() {
     }
 
     @Override

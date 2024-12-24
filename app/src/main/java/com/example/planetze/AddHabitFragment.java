@@ -1,6 +1,6 @@
 package com.example.planetze;
 
-import static utils.Constants.USER_DATA;
+import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.os.Bundle;
 
@@ -30,17 +30,17 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-import customDataStructures.EmissionNode;
-import customDataStructures.EmissionNodeCollection;
-import utils.Constants;
-import utils.UserData;
-import utils.UserEmissionsData;
+import com.example.planetze.customDataStructures.EmissionNode;
+import com.example.planetze.customDataStructures.EmissionNodeCollection;
+import com.example.planetze.utils.Constants;
+import com.example.planetze.utils.UserData;
+import com.example.planetze.utils.UserEmissionsData;
 
 /**
  * A simple {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class AddHabit extends Fragment {
+public class AddHabitFragment extends Fragment {
     private boolean returnToEcoTracker = true;
     private View globalView;
     private final String[] categories = Constants.categories;
@@ -56,11 +56,11 @@ public class AddHabit extends Fragment {
     String selectedHabit = "";
 
 
-    public AddHabit() {
+    public AddHabitFragment() {
         // Required empty public constructor
     }
 
-    public AddHabit(boolean b) {
+    public AddHabitFragment(boolean b) {
         returnToEcoTracker = b;
     }
 

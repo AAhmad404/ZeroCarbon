@@ -1,4 +1,4 @@
-package utils;
+package com.example.planetze.utils;
 
 import android.content.Context;
 

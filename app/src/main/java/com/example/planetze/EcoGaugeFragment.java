@@ -1,22 +1,22 @@
 package com.example.planetze;
 
-import static utils.Colors.PALETTE_TURQUOISE;
-import static utils.Colors.PALETTE_TURQUOISE_TINT_100;
-import static utils.Colors.PALETTE_TURQUOISE_TINT_200;
-import static utils.Colors.PALETTE_TURQUOISE_TINT_400;
-import static utils.Colors.PALETTE_TURQUOISE_TINT_500;
-import static utils.Colors.PALETTE_TURQUOISE_TINT_600;
-import static utils.Colors.PALETTE_TURQUOISE_TINT_800;
-import static utils.Constants.DAILY;
-import static utils.Constants.DEFAULT_COUNTRY;
-import static utils.Constants.HIDE_GRID_LINES;
-import static utils.Constants.HIDE_TREND_LINE_POINTS;
-import static utils.Constants.INTERPOLATE_EMISSIONS_DATA;
-import static utils.Constants.MONTHLY;
-import static utils.Constants.OVERALL;
-import static utils.Constants.WEEKLY;
-import static utils.Constants.YEARLY;
-import static utils.Constants.country;
+import static com.example.planetze.utils.Colors.PALETTE_TURQUOISE;
+import static com.example.planetze.utils.Colors.PALETTE_TURQUOISE_TINT_100;
+import static com.example.planetze.utils.Colors.PALETTE_TURQUOISE_TINT_200;
+import static com.example.planetze.utils.Colors.PALETTE_TURQUOISE_TINT_400;
+import static com.example.planetze.utils.Colors.PALETTE_TURQUOISE_TINT_500;
+import static com.example.planetze.utils.Colors.PALETTE_TURQUOISE_TINT_600;
+import static com.example.planetze.utils.Colors.PALETTE_TURQUOISE_TINT_800;
+import static com.example.planetze.utils.Constants.DAILY;
+import static com.example.planetze.utils.Constants.DEFAULT_COUNTRY;
+import static com.example.planetze.utils.Constants.HIDE_GRID_LINES;
+import static com.example.planetze.utils.Constants.HIDE_TREND_LINE_POINTS;
+import static com.example.planetze.utils.Constants.INTERPOLATE_EMISSIONS_DATA;
+import static com.example.planetze.utils.Constants.MONTHLY;
+import static com.example.planetze.utils.Constants.OVERALL;
+import static com.example.planetze.utils.Constants.WEEKLY;
+import static com.example.planetze.utils.Constants.YEARLY;
+import static com.example.planetze.utils.Constants.country;
 
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
@@ -65,11 +65,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import utils.CountryEmissionsData;
-import customDataStructures.EmissionNode;
-import customDataStructures.EmissionNodeCollection;
-import utils.UserData;
-import utils.UserEmissionsData;
+import com.example.planetze.utils.CountryEmissionsData;
+import com.example.planetze.customDataStructures.EmissionNode;
+import com.example.planetze.customDataStructures.EmissionNodeCollection;
+import com.example.planetze.utils.UserData;
+import com.example.planetze.utils.UserEmissionsData;
 
 
 /**

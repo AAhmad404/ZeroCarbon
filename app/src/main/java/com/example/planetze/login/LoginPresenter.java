@@ -1,4 +1,4 @@
-package com.example.planetze.Login;
+package com.example.planetze.login;
 
 import static androidx.activity.result.ActivityResultCallerKt.registerForActivityResult;
 

@@ -1,4 +1,4 @@
-package com.example.planetze.Login;
+package com.example.planetze.login;
 
 import android.app.Activity;
 import android.content.Context;
@@ -28,7 +28,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
-import utils.UserData;
+import com.example.planetze.utils.UserData;
 
 public class LoginView extends Fragment  {
 

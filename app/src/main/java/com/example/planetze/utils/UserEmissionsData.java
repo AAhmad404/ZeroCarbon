@@ -1,7 +1,7 @@
-package utils;
+package com.example.planetze.utils;
 
-import static utils.Constants.EMISSIONS_AMOUNT_INDEX;
-import static utils.Constants.EMISSION_TYPE_INDEX;
+import static com.example.planetze.utils.Constants.EMISSIONS_AMOUNT_INDEX;
+import static com.example.planetze.utils.Constants.EMISSION_TYPE_INDEX;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,8 +19,8 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-import customDataStructures.EmissionNode;
-import customDataStructures.EmissionNodeCollection;
+import com.example.planetze.customDataStructures.EmissionNode;
+import com.example.planetze.customDataStructures.EmissionNodeCollection;
 
 
 /**

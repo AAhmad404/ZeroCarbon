@@ -21,7 +21,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Objects;
 
-import utils.UserData;
+import com.example.planetze.utils.UserData;
 
 public class HomeActivity extends AppCompatActivity {
 

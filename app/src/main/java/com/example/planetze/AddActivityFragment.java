@@ -1,6 +1,6 @@
 package com.example.planetze;
 
-import static utils.Constants.USER_DATA;
+import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.os.Bundle;
 
@@ -33,14 +33,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import utils.Constants;
-import utils.UserData;
+import com.example.planetze.utils.Constants;
+import com.example.planetze.utils.UserData;
 
 /**
  * A {@link Fragment} subclass.
  * create an instance of this fragment.
  */
-public class AddActivity extends Fragment {
+public class AddActivityFragment extends Fragment {
     private final String msg1 = "Select a Category";
     private final String msg2 = "Select an Activity";
     private final String catactPrompt = "Please select a category and activity";
@@ -57,7 +57,7 @@ public class AddActivity extends Fragment {
     static String userId;  //this should be changed to the particular logged in user once everything works
     int recursionLimiter = 0;
 
-    public AddActivity() {
+    public AddActivityFragment() {
         // Required empty public constructor
     }
 
@@ -65,7 +65,7 @@ public class AddActivity extends Fragment {
      * this constructor used for adding activities
      * @param d
      */
-    public AddActivity(String d) {
+    public AddActivityFragment(String d) {
         date = d;  //d passed as an argument from eco tracker (current calendar date)
     }
 
@@ -76,7 +76,7 @@ public class AddActivity extends Fragment {
      * @param activity
      * @param i
      */
-    public AddActivity(String d, List<String> activity, int i) {
+    public AddActivityFragment(String d, List<String> activity, int i) {
         date = d;
         edit = 1;  //used to determine if we are in edit mode or add mode (1 -> edit mode)
         activityToEdit = activity;

@@ -20,7 +20,6 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class EcoAgentFragment extends Fragment {
 

@@ -1,18 +1,18 @@
 package com.example.planetze;
 
-import static utils.Constants.EMAIL;
-import static utils.Constants.FIREBASE_URL;
-import static utils.Constants.HIDE_GRID_LINES;
-import static utils.Constants.INTERPOLATE_EMISSIONS_DATA;
-import static utils.Constants.HIDE_TREND_LINE_POINTS;
-import static utils.Constants.STAY_LOGGED_ON;
-import static utils.Constants.USER_DATA;
-import static utils.Constants.USERNAME;
+import static com.example.planetze.utils.Constants.EMAIL;
+import static com.example.planetze.utils.Constants.FIREBASE_URL;
+import static com.example.planetze.utils.Constants.HIDE_GRID_LINES;
+import static com.example.planetze.utils.Constants.INTERPOLATE_EMISSIONS_DATA;
+import static com.example.planetze.utils.Constants.HIDE_TREND_LINE_POINTS;
+import static com.example.planetze.utils.Constants.STAY_LOGGED_ON;
+import static com.example.planetze.utils.Constants.USER_DATA;
+import static com.example.planetze.utils.Constants.USERNAME;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.planetze.Login.LoginView;
+import com.example.planetze.login.LoginView;
 
 import androidx.appcompat.app.AlertDialog;
 
@@ -29,7 +29,7 @@ import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import utils.UserData;
+import com.example.planetze.utils.UserData;
 
 public class SettingActivity extends AppCompatActivity {
 

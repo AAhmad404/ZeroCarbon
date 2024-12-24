@@ -1,4 +1,4 @@
-package customDataStructures;
+package com.example.planetze.customDataStructures;
 
 import androidx.annotation.NonNull;
 

@@ -24,12 +24,12 @@
     </fragment>
     <fragment
         android:id="@+id/AddActivity"
-        android:name="com.example.planetze.AddActivity"
+        android:name="com.example.planetze.AddActivityFragment"
         android:label="fragment_add_activity"
         tools:layout="@layout/fragment_add_activity" />
     <fragment
         android:id="@+id/AddHabit"
-        android:name="com.example.planetze.AddHabit"
+        android:name="com.example.planetze.AddHabitFragment"
         android:label="fragment_add_habit"
         tools:layout="@layout/fragment_add_habit" />
     <fragment
@@ -44,7 +44,7 @@
         tools:layout="@layout/fragment_eco_hub_entry_" />
     <fragment
         android:id="@+id/LoginView"
-        android:name="com.example.planetze.Login.LoginView"
+        android:name="com.example.planetze.login.LoginView"
         android:label="@string/login_label"
         tools:layout="@layout/fragment_login">
 

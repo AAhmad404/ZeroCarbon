@@ -1,6 +1,6 @@
 package com.example.planetze;
 
-import static utils.Constants.USER_DATA;
+import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.os.Bundle;
 
@@ -31,8 +31,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
-import utils.Constants;
-import utils.UserData;
+import com.example.planetze.utils.Constants;
+import com.example.planetze.utils.UserData;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -86,7 +86,7 @@ public class EcoTrackerFragment extends Fragment {
             presetCalendar = 0;
         }
 
-        AddHabit.getEmissionsSnapshot(userId);
+        AddHabitFragment.getEmissionsSnapshot(userId);
     }
 
     /**
@@ -104,7 +104,7 @@ public class EcoTrackerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        AddHabit.getEmissionsSnapshot(userId);
+        AddHabitFragment.getEmissionsSnapshot(userId);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_eco_tracker, container, false);
         globalView = view;
@@ -227,10 +227,10 @@ public class EcoTrackerFragment extends Fragment {
                 issuePrompt2.setVisibility(View.INVISIBLE);
 
                 //passes date parameter so activity is added to current date
-                AddActivity addActivity = new AddActivity(date);
+                AddActivityFragment addActivityFragment = new AddActivityFragment(date);
                 FragmentManager fragmentManager = getChildFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.eco_tracker, addActivity);
+                fragmentTransaction.replace(R.id.eco_tracker, addActivityFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }
@@ -394,7 +394,7 @@ public class EcoTrackerFragment extends Fragment {
 
                 Toast.makeText(getContext(), "New Activity Logged", Toast.LENGTH_SHORT).show();
                 List<String> habitToLog = currentHabits.get(id);
-                AddActivity.writeToFirebase(date, habitToLog, userId);
+                AddActivityFragment.writeToFirebase(date, habitToLog, userId);
 
                 fetchSnapshot();  //Update ecoTracker display
                 updateDisplay();
@@ -404,10 +404,10 @@ public class EcoTrackerFragment extends Fragment {
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddHabit addHabit = new AddHabit(false);  //"false" prevents immediate return to ecotracker
+                AddHabitFragment addHabitFragment = new AddHabitFragment(false);  //"false" prevents immediate return to ecotracker
                 FragmentManager fragmentManager = getChildFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.eco_tracker, addHabit);
+                fragmentTransaction.replace(R.id.eco_tracker, addHabitFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 //DialogFragment addHabit = new AddHabit();
@@ -538,10 +538,10 @@ public class EcoTrackerFragment extends Fragment {
                         return;
                     }
                     //boots addActivity in edit mode, passing activityToEdit
-                    AddActivity addActivity = new AddActivity(date, activityToEdit, id);
+                    AddActivityFragment addActivityFragment = new AddActivityFragment(date, activityToEdit, id);
                     FragmentManager fragmentManager = getChildFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.eco_tracker, addActivity);
+                    fragmentTransaction.replace(R.id.eco_tracker, addActivityFragment);
                     fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                 }
@@ -559,10 +559,10 @@ public class EcoTrackerFragment extends Fragment {
         annualEmissionsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SurveyResults surveyResults = new SurveyResults(true);
+                SurveyResultsFragment surveyResultsFragment = new SurveyResultsFragment(true);
                 FragmentManager fragmentManager = getChildFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.eco_tracker, surveyResults);
+                fragmentTransaction.replace(R.id.eco_tracker, surveyResultsFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
             }

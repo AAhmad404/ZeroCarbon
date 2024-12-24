@@ -1,18 +1,18 @@
-package utils;
+package com.example.planetze.utils;
 
 import static java.lang.Thread.sleep;
 
-import static utils.Constants.AUTH;
-import static utils.Constants.DEFAULT_CAR;
-import static utils.Constants.DEFAULT_COUNTRY;
-import static utils.Constants.EMAIL;
-import static utils.Constants.HIDE_GRID_LINES;
-import static utils.Constants.INTERPOLATE_EMISSIONS_DATA;
-import static utils.Constants.HIDE_TREND_LINE_POINTS;
-import static utils.Constants.STAY_LOGGED_ON;
-import static utils.Constants.UNVERIFIED_USERS_REFERENCE;
-import static utils.Constants.USERNAME;
-import static utils.Constants.USER_REFERENCE;
+import static com.example.planetze.utils.Constants.AUTH;
+import static com.example.planetze.utils.Constants.DEFAULT_CAR;
+import static com.example.planetze.utils.Constants.DEFAULT_COUNTRY;
+import static com.example.planetze.utils.Constants.EMAIL;
+import static com.example.planetze.utils.Constants.HIDE_GRID_LINES;
+import static com.example.planetze.utils.Constants.INTERPOLATE_EMISSIONS_DATA;
+import static com.example.planetze.utils.Constants.HIDE_TREND_LINE_POINTS;
+import static com.example.planetze.utils.Constants.STAY_LOGGED_ON;
+import static com.example.planetze.utils.Constants.UNVERIFIED_USERS_REFERENCE;
+import static com.example.planetze.utils.Constants.USERNAME;
+import static com.example.planetze.utils.Constants.USER_REFERENCE;
 
 import android.content.Context;
 import android.content.SharedPreferences;

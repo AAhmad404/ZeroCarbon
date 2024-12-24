@@ -1,6 +1,6 @@
 package com.example.planetze;
 
-import static utils.Constants.USER_DATA;
+import static com.example.planetze.utils.Constants.USER_DATA;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,8 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import utils.Constants;
-import utils.UserData;
+import com.example.planetze.utils.Constants;
+import com.example.planetze.utils.UserData;
 
 public class SurveyFragment extends Fragment {
 
@@ -37,10 +37,10 @@ public class SurveyFragment extends Fragment {
     //final int total_cats = categories.length;
     final String[][] questions = Constants.questions;
     final int num_qs = size(questions);
-    final int num_transport_qs = Constants.transport_qs;
-    final int num_food_qs = Constants.food_qs;
-    final int num_housing_qs = Constants.housing_qs;
-    final int num_consumption_qs = Constants.consumption_qs;
+    final int num_transport_qs = Constants.NUM_OF_TRANSPORT_QUESTIONS;
+    final int num_food_qs = Constants.NUM_OF_FOOD_QUESTIONS;
+    final int num_housing_qs = Constants.NUM_OF_HOUSING_QUESTIONS;
+    final int num_consumption_qs = Constants.NUM_OF_CONSUMPTION_QUESTIONS;
     final double[][][][][] housing_emissions = Constants.housing_emissions;
     final double[][] public_transport_emissions = Constants.public_trans_emissions;
     final double[][][] recycling_reduction = Constants.recycling_reduction;
@@ -540,7 +540,7 @@ public class SurveyFragment extends Fragment {
                     userRef.child("is_new_user").setValue(false);
 
                     //"false" makes it so that pressing home button on survey results goes to app homepage
-                    loadFragment(new SurveyResults(false));
+                    loadFragment(new SurveyResultsFragment(false));
                     return;
                 }
                 if (questions[current_q][0].equals("-")) {  //iter'n to next category if necessary

@@ -1,15 +1,15 @@
-package com.example.planetze.Login;
+package com.example.planetze.login;
 
 import static android.app.Activity.RESULT_OK;
 
-import static utils.Constants.AUTH;
-import static utils.Constants.EMAIL;
-import static utils.Constants.HIDE_GRID_LINES;
-import static utils.Constants.INTERPOLATE_EMISSIONS_DATA;
-import static utils.Constants.HIDE_TREND_LINE_POINTS;
-import static utils.Constants.STAY_LOGGED_ON;
-import static utils.Constants.UNVERIFIED_USERS_REFERENCE;
-import static utils.Constants.USER_REFERENCE;
+import static com.example.planetze.utils.Constants.AUTH;
+import static com.example.planetze.utils.Constants.EMAIL;
+import static com.example.planetze.utils.Constants.HIDE_GRID_LINES;
+import static com.example.planetze.utils.Constants.INTERPOLATE_EMISSIONS_DATA;
+import static com.example.planetze.utils.Constants.HIDE_TREND_LINE_POINTS;
+import static com.example.planetze.utils.Constants.STAY_LOGGED_ON;
+import static com.example.planetze.utils.Constants.UNVERIFIED_USERS_REFERENCE;
+import static com.example.planetze.utils.Constants.USER_REFERENCE;
 
 import androidx.activity.result.ActivityResult;
 import androidx.annotation.NonNull;
@@ -25,7 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 
-import utils.UserData;
+import com.example.planetze.utils.UserData;
 
 public class LoginModel {
 
