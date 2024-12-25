@@ -13,17 +13,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Planetze"
+        android:theme="@style/Theme.ZeroCarbon"
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
             android:name=".SettingActivity"
             android:exported="false"
-            android:theme="@style/Theme.Planetze" />
+            android:theme="@style/Theme.ZeroCarbon" />
         <activity
             android:name=".HomeActivity"
             android:exported="false"
-            android:theme="@style/Theme.Planetze" />
+            android:theme="@style/Theme.ZeroCarbon" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

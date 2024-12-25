@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Planetze</string>
+    <string name="app_name">ZeroCarbon</string>
 
     <!-- Sign-in and sign-up pages -->
     <string name="welcome">Welcome!</string>
@@ -29,7 +29,7 @@
     <string name="login_label">Login</string>
 
     <string name="signupSuccess">Signup Successful!</string>
-    <string name="Welcome">\nwelcome to planetze, insert name</string>
+    <string name="Welcome">\nwelcome to ZeroCarbon, insert name</string>
     <string name="checkEmail"> \nPlease check your email to verify your account.</string>
     <string name="tapResend">Didn\'t receive an email? Tap the button below to resend the verification email.\n</string>
     <string name="resend">Resend confirmation email</string>

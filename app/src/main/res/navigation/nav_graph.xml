@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/EcoGaugeFragment"
-        android:name="com.example.planetze.EcoGaugeFragment"
+        android:name="com.example.zerocarbon.EcoGaugeFragment"
         android:label="@string/eco_gauge"
         tools:layout="@layout/fragment_eco_gauge" />
     <fragment
         android:id="@+id/EcoTrackerFragment"
-        android:name="com.example.planetze.EcoTrackerFragment"
+        android:name="com.example.zerocarbon.EcoTrackerFragment"
         android:label="@string/eco_tracker"
         tools:layout="@layout/fragment_eco_tracker">
         <action
@@ -24,27 +24,27 @@
     </fragment>
     <fragment
         android:id="@+id/AddActivity"
-        android:name="com.example.planetze.AddActivityFragment"
+        android:name="com.example.zerocarbon.AddActivityFragment"
         android:label="fragment_add_activity"
         tools:layout="@layout/fragment_add_activity" />
     <fragment
         android:id="@+id/AddHabit"
-        android:name="com.example.planetze.AddHabitFragment"
+        android:name="com.example.zerocarbon.AddHabitFragment"
         android:label="fragment_add_habit"
         tools:layout="@layout/fragment_add_habit" />
     <fragment
         android:id="@+id/EcoBalanceFragment"
-        android:name="com.example.planetze.EcoBalanceFragment"
+        android:name="com.example.zerocarbon.EcoBalanceFragment"
         android:label="@string/eco_balance"
         tools:layout="@layout/fragment_eco_balance_fragment" />
     <fragment
         android:id="@+id/EcoHubEntryFragment"
-        android:name="com.example.planetze.EcoHubEntryFragment"
+        android:name="com.example.zerocarbon.EcoHubEntryFragment"
         android:label="@string/eco_hub"
         tools:layout="@layout/fragment_eco_hub_entry_" />
     <fragment
         android:id="@+id/LoginView"
-        android:name="com.example.planetze.login.LoginView"
+        android:name="com.example.zerocarbon.login.LoginView"
         android:label="@string/login_label"
         tools:layout="@layout/fragment_login">
 
@@ -54,7 +54,7 @@
     </fragment>
     <fragment
         android:id="@+id/EcoAgentFragment"
-        android:name="com.example.planetze.EcoAgentFragment"
+        android:name="com.example.zerocarbon.EcoAgentFragment"
         android:label="Eco Agent"
         tools:layout="@layout/fragment_eco_agent"
     />

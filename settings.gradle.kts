@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Planetze"
+rootProject.name = "ZeroCarbon"
 include(":app")

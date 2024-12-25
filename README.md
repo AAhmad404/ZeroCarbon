@@ -1,4 +1,4 @@
-# Carbon Emissions Tracker
+# ZeroCarbon
 
 ## About
 

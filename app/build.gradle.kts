@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.planetze"
+    namespace = "com.example.zerocarbon"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.planetze"
+        applicationId = "com.example.zerocarbon"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
