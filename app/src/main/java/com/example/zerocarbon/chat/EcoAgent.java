@@ -16,6 +16,8 @@ import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -35,6 +37,7 @@ public class EcoAgent {
     }
 
     private GenerativeModel agent;
+    private final List<ChatMessage> history;
 
     /**
      * Constructs an instance of EcoAgent with predefined configuration for the generative model.
@@ -45,7 +48,6 @@ public class EcoAgent {
         configBuilder.topK = 10;
         configBuilder.topP = 0.95f;
         configBuilder.maxOutputTokens = 2048;
-
 
         // Define safety settings to filter harmful content
         ArrayList<SafetySetting> safetySettings = new ArrayList<>();
@@ -61,6 +63,45 @@ public class EcoAgent {
                 configBuilder.build(),
                 safetySettings
         );
+
+        this.history = new LinkedList<>();
+    }
+
+    /**
+     * Stores a new chat message in the history, ensuring that the history doesn't exceed 10
+     * messages.
+     *
+     * @param text   The content of the chat message to be stored.
+     * @param isUser A boolean indicating whether the message was sent by the user (true)
+     *               or the system (false).
+     */
+    private void storeHistory(String text, boolean isUser) {
+        // Add the new message to the history
+        if (history.size() >= 10) {
+            history.remove(0); // Remove the oldest message if history exceeds 10 messages
+        }
+        history.add(new ChatMessage(text, isUser));
+    }
+
+    /**
+     * Constructs a formatted string representing the conversation history for use in context creation.
+     * The context includes the series of messages exchanged between the user and the agent,
+     * with each message labeled as either "User" or "Agent".
+     *
+     * @return A {@link Content} object containing the formatted conversation history.
+     */
+    private Content constructContext() {
+        StringBuilder contextBuilder = new StringBuilder();
+        for (ChatMessage message : history) {
+            // Separate the messages based on the sender (user or agent)
+            if (message.isUser()) {
+                contextBuilder.append("User:\n");
+            } else {
+                contextBuilder.append("Agent:\n");
+            }
+            contextBuilder.append(message.getMessage()).append("\n");
+        }
+        return new Content.Builder().addText(contextBuilder.toString()).build();
     }
 
     /**
@@ -72,20 +113,19 @@ public class EcoAgent {
     public void askAgent(String text, Callback callback) {
         GenerativeModelFutures model = GenerativeModelFutures.from(agent);
 
-        // Build the content to be processed by the model
-        Content content = new Content.Builder()
-                .addText(text)
-                .build();
+        storeHistory(text, true);
+
         Executor executor = Executors.newSingleThreadExecutor();
 
-        // Use a single-threaded executor for handling asynchronous callbacks
-        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
+        Content context = constructContext();
+        ListenableFuture<GenerateContentResponse> response = model.generateContent(context);
 
         // Add a callback to handle the response asynchronously
         Futures.addCallback(response, new FutureCallback<>() {
             @Override
             public void onSuccess(GenerateContentResponse result) {
                 String resultText = result.getText();
+                storeHistory(resultText, false);
                 callback.onSuccess(resultText);
             }
 
